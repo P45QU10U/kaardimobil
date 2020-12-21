@@ -1,0 +1,31 @@
+# Doc Kaardimobil
+
+## Environnement 
+
+* Next
+* Sanity
+
+## Hébergement 
+
+Vercel
+
+## BDD
+
+### Schémas
+
+#### Général 
+
+Nom
+Adresse
+numéro téléphone
+Horaires ouverture
+Promos affichées
+Messages affichés
+Réseaux sociaux
+
+#### Prestations
+
+Nom
+Prix
+
+#### Promotions
