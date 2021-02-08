@@ -67,4 +67,4 @@ function useAsync(initialState) {
   }
 }
 
-export { useAsync }
+export default useAsync

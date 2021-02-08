@@ -23,7 +23,9 @@ const postQuery = groq`*[_type == 'storeSettings'][0]{
 }`
 
 export async function getStaticProps({ preview = false }) {
-  const donnees = await getClient(preview).fetch(postQuery)
+  // const donnees = await getClient(preview).fetch(postQuery)
+
+  const donnees = {}
 
   return {
     props: {
@@ -33,7 +35,7 @@ export async function getStaticProps({ preview = false }) {
   }
 }
 
-export default function Home({ data, preview }) {
+export default function Index({ data, preview }) {
   const { data: paramsEnterprise } = usePreviewSubscription(postQuery, {
     initialData: data,
     enabled: preview,

@@ -4,7 +4,7 @@ import { FaSearch, FaTimes } from 'react-icons/fa'
 import { useCombobox } from 'downshift'
 import debounceFn from 'debounce-fn'
 
-import { useAsync } from '../utils/hooks'
+import useAsync  from '../hooks/useasync'
 import { FullPageSpinner } from '../components/lib'
 import { AddressRow } from '../components/addressRow'
 import { AdvertDistance } from '../components/AdvertDistance'
@@ -21,6 +21,8 @@ function InterventionPlaceScreen({ center, distanceMax }) {
     )}&lon=${encodeURIComponent(center.lng)}'
     }`
   }
+
+  // On peut faire un hook enregistrant dans le contexte l'adresse saisie 
 
   const debounce = useCallback(
     debounceFn(
