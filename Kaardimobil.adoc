@@ -25,7 +25,26 @@ Réseaux sociaux
 
 #### Prestations
 
+Une page par prestation, et sur l'index un récap
+
 Nom
+Descriptif
 Prix
 
+Catégorie
+Image catégorie
+
 #### Promotions
+
+
+## SEO
+
+Tabler sur les villes, et les textes
+
+
+garage proche 
+garage domicile
+réparation voiture
+pneus
+freins
+garage pas cher`
