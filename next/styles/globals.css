@@ -2,6 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: Roboto;
+    font-display: optional;
+    src: url("/fonts/Roboto-Regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: Kanit;
+    src: url("/fonts/kanit-light-webfont.woff") format("woff");
+  }
+
+  button {
+    @apply relative;
+  }
+
+  button::before {
+    @apply absolute inset-2;
+  }
+
+  ul li a {
+    @apply relative inline-block px-3 py-3 no-underline;
+  }
+
+  a {
+    @apply underline;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-different;
+  }
+
+  h1 {
+    @apply text-6xl;
+  }
+  h2 {
+    @apply text-4xl mb-4 text-cyan-800;
+  }
+  h3 {
+    @apply text-3xl mb-4 text-cyan-600;
+  }
+  h4 {
+    @apply text-2xl mb-2 text-cyan-600;
+  }
+
+  /* Fontes */
+  html {
+    @apply font-sans;
+  }
+
+  p {
+    @apply pb-4 font-different;
+  }
+}
+
+@layer utilities {
+  .filter-grayscale {
+    filter: grayscale(100%);
+  }
+}
+
 .detourage {
   /* from https://bennettfeely.com/clippy/ */
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
@@ -9,4 +72,20 @@
 
 input {
   caret-color: blue;
+}
+
+.header:after {
+  background: #f9fcff;
+  content: "";
+  height: 40rem;
+  left: -5%;
+  position: absolute;
+  right: -5%;
+
+  -webkit-transform: rotateZ(-4deg);
+  transform: rotateZ(-4deg);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  z-index: -1;
+  border-radius: 50%;
 }
