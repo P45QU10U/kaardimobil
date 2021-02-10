@@ -18,8 +18,8 @@ module.exports = {
         cyan: colors.cyan,
       },
       minHeight: {
-        'half': '60vh',
-      }
+        half: '50vh',
+      },
       // backgroundImage: (theme) => ({
       //   header: "url('/images/jesse-bowser-c0I4ahyGIkA-unsplash.jpg')",
       // }),

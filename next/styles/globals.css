@@ -22,7 +22,7 @@
   }
 
   ul li a {
-    @apply relative inline-block px-3 py-3 no-underline;
+    @apply relative px-3 py-3 no-underline;
   }
 
   a {
@@ -43,7 +43,7 @@
     @apply text-4xl mb-4 text-cyan-800;
   }
   h3 {
-    @apply text-3xl mb-4 text-cyan-600;
+    @apply text-3xl mb-4;
   }
   h4 {
     @apply text-2xl mb-2 text-cyan-600;
