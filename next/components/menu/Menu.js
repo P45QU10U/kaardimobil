@@ -2,6 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import MenuLi from './MenuLi';
 import SvgMenuIcon from './SvgMenuIcon';
+import {useRouter} from 'next/router'
+
+
 
 export const menu = [
   {
@@ -27,13 +30,16 @@ export default function Menu() {
   const [toggle, setToggle] = React.useState(false);
   const displayedMenu = !toggle ? 'hidden ' : '';
 
+  const {asPath} = useRouter()
+
+
   function toggleMenu(e) {
     e.preventDefault();
     setToggle(!toggle);
   }
 
   return (
-    <nav className="z-40">
+    <nav>
       <div className="grid grid-cols-2 p-4 items-center">
         <h1 className=" text-left text-4xl">
           <Link href="/">
@@ -52,8 +58,9 @@ export default function Menu() {
             </a>
           </Link>
         </h1>
+        <div className="grid items-center justify-items-end md:hidden">
         <button
-          className="grid items-center justify-items-end md:hidden"
+          
           type="button"
           onClick={(e) => toggleMenu(e)}
           aria-expanded={toggle}
@@ -61,12 +68,13 @@ export default function Menu() {
         >
           <SvgMenuIcon />
         </button>
+        </div>
         <ul
           id="menu"
-          className={`${displayedMenu} grid col-span-2 mt-4 text-center md:col-span-1 md:flex md:flex-wrap`}
+          className={`${displayedMenu} smooth grid col-span-2 mt-4 text-center md:col-span-1 md:flex md:flex-wrap`}
         >
           {menu.map((entr, index) => (
-            <MenuLi key={`menu-${index}`}>
+            <MenuLi key={`menu-${index}`} currentpage={asPath === entr.slug}>
               <Link href={entr.slug}>
                 <a
                   href={entr.slug}
