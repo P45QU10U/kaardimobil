@@ -17,6 +17,9 @@ module.exports = {
         amber: colors.amber,
         cyan: colors.cyan,
       },
+      minHeight: {
+        'half': '60vh',
+      }
       // backgroundImage: (theme) => ({
       //   header: "url('/images/jesse-bowser-c0I4ahyGIkA-unsplash.jpg')",
       // }),

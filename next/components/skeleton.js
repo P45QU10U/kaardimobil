@@ -9,6 +9,7 @@ import Splash from './Splash';
 import Coords from './Coords';
 import { Section } from './designSystem/layout';
 
+
 export const appendSiteTitle = ' - Homecano';
 
 export default function Skeleton({ children }) {
@@ -22,20 +23,22 @@ export default function Skeleton({ children }) {
       </Head>
       {/* <Splash> */}
       {/* <div className="bg-header bg-cover bg-green-200"> */}
-      <div className="relative ">
-        <div className="absolute inset-0">
+      <div className="relative min-h-half">
+        <div className="absolute inset-0 overflow-hidden bg-blue-400 bg-opacity-40">
           <Img
-            // layout="fill"
-            layout="responsive"
-            width={400}
-            height={300}
+            layout="fill"
+            // layout="responsive"
+            // width={400}
+            // height={300}
             className="absolute opacity-20"
             objectFit="cover"
             src="/images/jesse-bowser-c0I4ahyGIkA-unsplash.jpg"
             alt=""
           />
+          <div className="absolute -bottom-16 -left-5 -right-5 h-40 bg-white transform  rotate-2"></div>
         </div>
         <Header />
+      </div>
 
         <SkipNavContent
           style={{
@@ -45,7 +48,6 @@ export default function Skeleton({ children }) {
         >
           <main>{children}</main>
         </SkipNavContent>
-      </div>
 
       {/* <Section>
           <Coords />

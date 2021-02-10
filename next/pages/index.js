@@ -75,6 +75,23 @@ export default function Index({ data, preview }) {
             </p>
           </div>
         </div>
+      <Typo />
+      <Typo />
+      <Typo />
+      <Typo />
+      <Typo />
+      <Typo />
+      <Typo />
+      <Typo />
+      <Typo />
+      <Typo />
+      <Typo />
+      <Typo />
+      <Typo />
+      <InterventionPlace
+        center={paramsEnterprise.geocoords}
+        distanceMax={paramsEnterprise.interventiondistance}
+      />
       </Section>
 
       {/* <Img
@@ -85,11 +102,6 @@ export default function Index({ data, preview }) {
         className="detourage"
       /> */}
       <div>{name}</div>
-      <Typo />
-      <InterventionPlace
-        center={paramsEnterprise.geocoords}
-        distanceMax={paramsEnterprise.interventiondistance}
-      />
     </>
   );
 }
