@@ -2,6 +2,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Img from 'next/image';
 import { groq } from 'next-sanity';
+import {
+  FaArrowCircleRight,
+  FaCashRegister,
+  FaCheckCircle,
+  FaStopwatch,
+} from 'react-icons/fa';
 import { Section } from '../components/designSystem/layout';
 
 import Typo from '../components/typography';
@@ -27,8 +33,8 @@ const postQuery = groq`*[_type == 'storeSettings'][0]{
 }`;
 
 export async function getStaticProps({ preview = false }) {
-  // const donnees = await getClient(preview).fetch(postQuery)
-
+  // Just for the moment, disconnect from Sanity
+  // const donnees = await getClient(preview).fetch(postQuery);
   const donnees = {};
 
   return {
@@ -57,75 +63,86 @@ export default function Index({ data, preview }) {
           content="Homecano, c'est 95% de l'entretien d'un véhicule, où vous voulez"
         />
       </Head>
-      <Section className="bg-white">
-        <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center bg-white rounded-xl shadow-lg">
-            <div className="bg-yellow-300 bg-opacity-70 rounded-2xl md:rounded-none md:rounded-l-2xl p-8 flex flex-col gap-2">
-              <h3 className="text-sm">Gagnez votre temps</h3>
-              <p className="text-3xl">
-                N'attendez plus au garage. C'est lui qui vient à vous.
-              </p>
 
-              <p>Chez vous, sur votre lieu de travail. En bord de mer…</p>
-            </div>
+      <Section>
+        <FaStopwatch className="text-pink-500 text-3xl mb-4" title="parasol" />
+        <h2 className="uppercase text-2xl text-pink-500">Gagnez du temps</h2>
+        <h3 className="text-6xl font-extrabold">N'attendez plus au garage</h3>
 
-            <div className="relative">
-              <img
-                width="600"
-                height="400"
-                className="md:rounded-none md:rounded-r-2xl"
-                objectFit="cover"
-                alt="Site vitrine sur mesure"
-                src="/images/cles12.jpg"
-              />
-            </div>
+        <div className="grid grid-cols-2 gap-2">
+          <p className="text-gray-500 text-2xl">
+            C'est le garage qui vient à vous. Après, si vous m'amenez à
+            travailler ici, le bruit des vagues aidera le temps de la
+            réparation.
+          </p>
+          <div className="relative place-self-center">
+            <Img
+              layout="intrinsic"
+              width="200"
+              height="200"
+              className="rounded-lg"
+              objectFit="cover"
+              alt="Combi Volkswagen au bord de la mer"
+              src="/images/geoffroy-hauwen-Upg453Fo7wU-unsplash.jpg"
+            />
           </div>
         </div>
 
-        <h2 className="text-4xl bg-yellow-300 transform -rotate-2 p-12 sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mb-8 sm:mt-14 sm:mb-10">
+        <Link href="/contact">
+          <a className="text-xl text-pink-500 no-underline flex gap-2 items-center mb-12">
+            Prendre rendez-vous <FaArrowCircleRight />
+          </a>
+        </Link>
+        <ul>
+          <li>
+            <FaCheckCircle className="inline text-green-600" /> Chantier propre
+          </li>
+        </ul>
+      </Section>
+
+      <div className="grid relative overflow-hidden">
+        <div className="absolute mt-8 inset-0 -ml-24 -mr-24 bg-yellow-200 transform rotate-2" />
+
+        <Section className="relative mt-8">
+          <FaCashRegister
+            className="text-cyan-700 text-3xl mb-4"
+            title="caisse enregistreuse"
+          />
+          <h2 className="uppercase text-2xl text-cyan-800">Moins cher</h2>
+          <h3 className="text-6xl font-extrabold">Des prix tout doux</h3>
+          <p className="text-gray-500 text-2xl">
+            Votre facture sera plus légère. Habituellement, les concessionnaires
+            vous la mettent bien profond. Si un fusible est mort, le devis
+            affiche un système électrique à remplacer.
+          </p>
+          <p className="text-gray-500 text-2xl">
+            Chez Homecano, <del>on fait pareil</del>, on vous change que le
+            fusible, et avec le sourire (Quand vous insérez la carte).
+          </p>
+
+          <Link href="/prestations">
+            <a className="text-xl text-cyan-800 no-underline flex gap-2 items-center mb-12">
+              Consultez les tarifs <FaArrowCircleRight />
+            </a>
+          </Link>
+        </Section>
+      </div>
+      <Section className="relative">
+        <h2 className="text-4xl bg-yellow-300 transform rotate-2 p-12 sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-gray-900 mb-8 sm:mt-14 sm:mb-10">
           Un technicien automobile qui vient à vous !
         </h2>
 
-        <div className="grid relative">
-          <div className="absolute w-full h-60 transform rotate-1 bg-cyan-300 bg-opacity-40 rounded-xl" />
-          <p className="relative p-8 m-4 bg-gray-200 bg-opacity-30">
-            Bonjour, bienvenue
-          </p>
+        <Typo />
+        <Typo className="font-mono" />
+        <Typo className="font-serif" />
 
-          <div className="p-8">
-            <p className="mt-2 text-gray-500">
-              Getting a new business off the ground is a lot of hard work. Here
-              are five ideas you can use to find your first customers.
-            </p>
-          </div>
-        </div>
-        <Typo />
-        <Typo />
-        <Typo />
-        <Typo />
-        <Typo />
-        <Typo />
-        <Typo />
-        <Typo />
-        <Typo />
-        <Typo />
-        <Typo />
-        <Typo />
-        <Typo />
         <InterventionPlace
           center={paramsEnterprise.geocoords}
           distanceMax={paramsEnterprise.interventiondistance}
         />
       </Section>
 
-      {/* <Img
-        width={400}
-        height={300}
-        alt="car"
-        src="https://images-na.ssl-images-amazon.com/images/I/71fcXUoSyXL._AC_SL1500_.jpg"
-        className="detourage"
-      /> */}
-      <div>{name}</div>
+      <div>ici le name {name}</div>
     </>
   );
 }

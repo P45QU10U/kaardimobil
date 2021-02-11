@@ -60,3 +60,6 @@ Menu avec élem soulignés selon page.
   - Adresse via module frais de déplacement
   - Enregistrement immat
 
+* Création pages index, prestations, 
+
+Promotions, messages

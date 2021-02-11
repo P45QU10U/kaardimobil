@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { FaPhone } from 'react-icons/fa';
 import MenuLi from './MenuLi';
 import SvgMenuIcon from './SvgMenuIcon';
 
@@ -24,6 +25,10 @@ export const menu = [
   },
 ];
 
+const NomProjetBoite = 'Homecano';
+const Subline = 'Garage à domicile';
+const phonenumber = { href: '+33767472277', display: '07 67 47 22 77' };
+
 export default function Menu() {
   const [toggle, setToggle] = React.useState(false);
   const displayedMenu = !toggle ? 'hidden ' : '';
@@ -38,7 +43,7 @@ export default function Menu() {
   return (
     <nav>
       <div className="grid grid-cols-2 p-4 items-center md:flex md:gap-2">
-        <h1 className=" text-left text-4xl">
+        <h1 className="flex gap-3 text-left text-4xl">
           <Link href="/">
             <a href="/" className="flex gap-2 items-center no-underline">
               <img
@@ -48,12 +53,17 @@ export default function Menu() {
                 src="/images/homecano.svg"
                 alt="logo Homecano"
               />
-              <div className="grid gap-1">
-                <span>Homecano</span>
-                <span className="text-sm">Garage à domicile</span>
-              </div>
             </a>
           </Link>
+          <div className="grid gap-1">
+            <span>{NomProjetBoite}</span>
+            <span className="text-sm">{Subline}</span>
+
+            <a className="text-sm" href={`tel:${phonenumber.href}`}>
+              <FaPhone title="telephone" className="inline" />{' '}
+              {phonenumber.display}
+            </a>
+          </div>
         </h1>
         <div className="grid justify-items-end md:hidden">
           <button

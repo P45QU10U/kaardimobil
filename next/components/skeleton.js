@@ -22,13 +22,13 @@ export default function Skeleton({ children }) {
       </Head>
 
       <div className="relative min-h-half">
-        <div className="absolute inset-0 overflow-hidden bg-blue-400 bg-opacity-40">
+        <div className="absolute inset-0 overflow-hidden bg-cyan-400 bg-opacity-40">
           <Img
             layout="fill"
             // layout="responsive"
             // width={400}
             // height={300}
-            className="absolute opacity-20"
+            className="opacity-20"
             objectFit="cover"
             src="/images/jesse-bowser-c0I4ahyGIkA-unsplash.jpg"
             alt=""

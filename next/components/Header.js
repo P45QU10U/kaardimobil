@@ -7,14 +7,10 @@ import Coords from './Coords';
 export default function Header() {
   return (
     <>
-    <header
-      className={classnames(
-        maxWidthSections, 'relative'
-      )}
-    >
-      <Menu />
-    </header>
-    <Coords />
+      <header className={classnames(maxWidthSections, 'relative')}>
+        <Menu />
+      </header>
+      <Coords />
     </>
   );
 }
