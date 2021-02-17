@@ -20,19 +20,19 @@ const postQuery = groq`*[_type == 'services']{
 */
 
 export default function Prestations({ data, preview }) {
-  const { data: services } = usePreviewSubscription(postQuery, {
-    initialData: data,
-    enabled: preview,
-  });
+  // const { data: services } = usePreviewSubscription(postQuery, {
+  //   initialData: data,
+  //   enabled: preview,
+  // });
 
-  const categories = new Set(services.map((e) => e.category));
+  const categories = new Set(data.map((e) => e.category));
 
   return (
     <Section>
       {Array.from(categories, (e, index) => (
         <Categoryservice
           key={`gt${index}`}
-          services={services.filter((s) => s.category === e)}
+          services={data.filter((s) => s.category === e)}
           category={e}
         />
       ))}
