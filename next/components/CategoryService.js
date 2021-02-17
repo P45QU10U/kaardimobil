@@ -1,4 +1,4 @@
-export default function CategoryService({ services, children }) {
+export default function Categoryservice({ services, category }) {
   /* 
   
   Structure services
@@ -8,17 +8,17 @@ export default function CategoryService({ services, children }) {
 
   return (
     <div className="mb-4 p-4 bg-orange-300">
-      <h2>{children}</h2>
-      {services.map((d) => (
-        <div>
+      <h2>{category}</h2>
+      {services.map((d, i) => (
+        <div key={i}>
           <h3>{d.name}</h3>
           {d?.description && <p>{d.description}</p>}
           <ul>
-            <li>
+            <li key={i}>
               {d.defaultProductVariant.title} {d.defaultProductVariant.price}€
             </li>
-            {d?.variants?.map((v) => (
-              <li>
+            {d?.variants?.map((v, index) => (
+              <li key={`var${index}`}>
                 {v.title} {v.price}€
               </li>
             ))}

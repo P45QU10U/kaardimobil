@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity';
 import Link from 'next/link';
 import { FaArrowCircleRight } from 'react-icons/fa';
-import CategoryService from '../components/CategoryService';
+import Categoryservice from '../components/Categoryservice';
 import { Section } from '../components/designSystem/layout';
 import { getClient, usePreviewSubscription } from '../lib/sanity';
 
@@ -11,7 +11,7 @@ const postQuery = groq`*[_type == 'services']{
   defaultProductVariant{price, title},
   variants,
   'category': category->name
-} | order(category asc) `;
+} | order(category asc)`;
 /* 
 *[_type == 'services']{
   ...,
@@ -29,10 +29,12 @@ export default function Prestations({ data, preview }) {
 
   return (
     <Section>
-      {Array.from(categories, (e) => (
-        <CategoryService services={services.filter((s) => s.category === e)}>
-          {e}
-        </CategoryService>
+      {Array.from(categories, (e, index) => (
+        <Categoryservice
+          key={`gt${index}`}
+          services={services.filter((s) => s.category === e)}
+          category={e}
+        />
       ))}
 
       <p>C'est moins cher que votre garage, et tout aussi bien fait.</p>
