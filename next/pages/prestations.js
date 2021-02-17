@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity';
 import Link from 'next/link';
 import { FaArrowCircleRight } from 'react-icons/fa';
-import Categoryservice from '../components/Categoryservice';
+import Servicedetails from '../components/Servicedetails';
 import { Section } from '../components/designSystem/layout';
 import { getClient, usePreviewSubscription } from '../lib/sanity';
 
@@ -30,7 +30,7 @@ export default function Prestations({ data, preview }) {
   return (
     <Section>
       {Array.from(categories, (e, index) => (
-        <Categoryservice
+        <Servicedetails
           key={`gt${index}`}
           services={data.filter((s) => s.category === e)}
           category={e}
