@@ -89,8 +89,8 @@ export default function Index({ data, preview }) {
         </div>
 
         <Link href="/contact">
-          <a className="text-xl text-pink-500 no-underline flex gap-2 items-center mb-12">
-            Prendre rendez-vous <FaArrowCircleRight />
+          <a className="text-xl text-pink-500 no-underline inline-block mb-12 border-pink-500 hover:border-pink-700 hover:text-pink-700 hover:shadow-sm border-2 p-3 rounded-lg">
+            Prendre rendez-vous <FaArrowCircleRight className="inline ml-2" />
           </a>
         </Link>
         <ul>
@@ -111,18 +111,17 @@ export default function Index({ data, preview }) {
           <h2 className="uppercase text-2xl text-cyan-800">Moins cher</h2>
           <h3 className="text-6xl font-extrabold">Des prix tout doux</h3>
           <p className="text-gray-500 text-2xl">
-            Votre facture sera plus légère. Habituellement, les concessionnaires
-            vous la mettent bien profond. Si un fusible est mort, le devis
-            affiche un système électrique à remplacer.
+            Votre facture sera plus légère. Si un fusible est grillé, le devis
+            n'affichera pas un système électrique à remplacer.
           </p>
           <p className="text-gray-500 text-2xl">
-            Chez Homecano, <del>on fait pareil</del>, on vous change que le
-            fusible, et avec le sourire (Quand vous insérez la carte).
+            Chez Ho'Mecano, on ne vous changera que le fusible.
           </p>
 
           <Link href="/prestations">
-            <a className="text-xl text-cyan-800 no-underline flex gap-2 items-center mb-12">
-              Consultez les tarifs <FaArrowCircleRight />
+            <a className="text-xl text-cyan-800 no-underline inline-block mb-12 border-cyan-800 hover:border-cyan-900 hover:text-cyan-900 hover:shadow-md border-2 p-3 rounded-lg">
+              Consultez les tarifs{' '}
+              <FaArrowCircleRight className="inline ml-2" />
             </a>
           </Link>
         </Section>
