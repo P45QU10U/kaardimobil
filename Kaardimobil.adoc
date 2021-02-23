@@ -63,3 +63,6 @@ Menu avec élem soulignés selon page.
 * Création pages index, prestations, 
 
 Promotions, messages
+
+
+Déplacer kaardimobil dans dossier next
