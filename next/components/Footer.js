@@ -1,50 +1,35 @@
 import Link from 'next/link';
+import { useContext } from 'react';
 import { SiTwitter } from 'react-icons/si';
 import { Container, Section } from './designSystem/layout';
 import { menu } from './menu/Menu';
-
-/* 
-<script type="application/ld+json">
-{{
-  '@context': 'https://schema.org',
-  '@type': ['TouristAttraction', 'AmusementPark'],
-  name: 'Disneyland Paris',
-  description:
-    "It's an amusement park in Marne-la-Vallée, near Paris, in France and is the most visited theme park in all of France and Europe.",
-  openingHours: [
-    'Mo-Fr 10:00-19:00',
-    'Sa 10:00-22:00',
-    'Su 10:00-21:00',
-  ],
-  isAccessibleForFree: false,
-  currenciesAccepted: 'EUR',
-  paymentAccepted: 'Cash, Credit Card',
-  url: 'http://www.disneylandparis.it/',
-}}
-</script> 
-
-
-
-*/
+import { ParamStore } from '../pages/_app';
+import Openinghours from './Openinghours';
 
 export default function Footer() {
+  const params = useContext(ParamStore);
+  const { address } = params;
+
   return (
     <Container className="bg-gray-50 bg-opacity-80">
-      <Section className="grid grid-cols-1 grid-rows-2 md:grid-cols-3 p-4 gap-4">
+      <Section className="grid grid-cols-1 grid-rows-2 md:grid-cols-2 lg:grid-cols-2 p-4 gap-4">
         <div className="mb-4 md:border-r-2 border-gray-300">
           <h4>Coordonnées</h4>
           <p>
-            Pasquiou Richard
+            {params.name}
             <br />
-            1 impasse des érables
+            {[address.streetNo, address.street].join(' ')}
             <br />
-            27350 Routot
+            {[address.postalcode, address.city].join(' ')}
           </p>
           <abbr title="Numéro de téléphone">Tél. :</abbr>{' '}
-          <a href="tel:0676946381">06 76 94 63 81</a>
+          <a href={`tel:+33${params.phonenumber.slice(1)}`}>
+            {params.phonenumber.split(/(?=(?:..)*$)/).join(' ')}
+          </a>
         </div>
         <div className="mb-4 md:border-r-2 border-gray-300">
           <h4>Horaires</h4>
+          <Openinghours opendays={params.openinghours} />
         </div>
         <div id="footermap" className="mb-4">
           <h4>Plan du site</h4>
