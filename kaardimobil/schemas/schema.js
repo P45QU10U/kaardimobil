@@ -10,7 +10,9 @@ import socialnetwork from './socialnetwork'
 import categoryservices from './service-category'
 import serviceVariant from './service-prices'
 import services from './service'
-import weekdays from './weekdays'
+import openingdays from './opening_days'
+import openinghours from './opening_hours'
+import interventioncosts from './interventionCosts'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -19,6 +21,6 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    store, offers, socialnetwork, categoryservices, serviceVariant, services, weekdays
+    store, offers, socialnetwork, categoryservices, serviceVariant, services, openingdays, openinghours, interventioncosts
   ]),
 })

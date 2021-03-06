@@ -1,9 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
+import Img from 'next/image';
 import { useRouter } from 'next/router';
 import { FaPhone } from 'react-icons/fa';
 import MenuLi from './MenuLi';
 import SvgMenuIcon from './SvgMenuIcon';
+import { useAppContext } from '../../pages/_app';
 
 export const menu = [
   {
@@ -11,8 +13,8 @@ export const menu = [
     slug: '/',
   },
   {
-    title: 'Prestations',
-    slug: '/prestations',
+    title: 'Tarifs',
+    slug: '/tarifs',
   },
   {
     title: 'Contact',
@@ -25,46 +27,45 @@ export const menu = [
   },
 ];
 
-const NomProjetBoite = 'Homecano';
-const Subline = 'Garage à domicile';
-const phonenumber = { href: '+33767472277', display: '07 67 47 22 77' };
+const Subline = 'Garage mobile';
 
 export default function Menu() {
+  const { name, phonenumber } = useAppContext();
+
   const [toggle, setToggle] = React.useState(false);
   const displayedMenu = !toggle ? 'hidden ' : '';
 
   const { asPath } = useRouter();
 
   function toggleMenu(e) {
-    e.preventDefault();
+    // e.preventDefault();
     setToggle(!toggle);
   }
 
   return (
     <nav>
       <div className="grid grid-cols-2 p-4 items-center md:flex md:gap-2">
-        <h1 className="flex gap-3 text-left text-4xl">
+        <div className="flex gap-3 text-left text-4xl">
           <Link href="/">
             <a href="/" className="flex gap-2 items-center no-underline">
-              <img
-                width="50"
-                height="50"
+              <Img
+                width="400"
+                height="400"
                 className="text-xs"
-                src="/images/homecano.svg"
-                alt="logo Homecano"
+                src="/images/homecano.png"
+                alt={`logo ${name}`}
               />
             </a>
           </Link>
-          <div className="grid gap-1">
-            <span>{NomProjetBoite}</span>
+          <div className="grid gap-1 items-center">
+            <span>{name}</span>
             <span className="text-sm">{Subline}</span>
-
-            <a className="text-sm" href={`tel:${phonenumber.href}`}>
+            <a className="text-sm" href={`tel:+33${phonenumber.slice(1)}`}>
               <FaPhone title="telephone" className="inline" />{' '}
-              {phonenumber.display}
+              {phonenumber.split(/(?=(?:..)*$)/).join(' ')}
             </a>
           </div>
-        </h1>
+        </div>
         <div className="grid justify-items-end md:hidden">
           <button
             type="button"
@@ -85,6 +86,7 @@ export default function Menu() {
                 <a
                   href={entr.slug}
                   className="hover:ring hover:ring-orange-500"
+                  onClick={(e) => toggleMenu(e)}
                 >
                   {entr.title}
                 </a>

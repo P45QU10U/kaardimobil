@@ -1,7 +1,7 @@
 export default {
-  name: 'interventionCost',
+  name: 'interventioncosts',
   title: 'Coût intervention distance',
-  type: 'document',
+  type: 'object',
   fields: [
     {
       name: 'distance',
