@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SiTwitter } from 'react-icons/si';
+import { SiFacebook } from 'react-icons/si';
 import { useAppContext } from '../pages/_app';
 import { Container, Section } from './designSystem/layout';
 import { menu } from './menu/Menu';
@@ -48,9 +48,9 @@ export default function Footer() {
 
           <ul>
             <li>
-              <a href="https://twitter.com/P45QU10U" className="flex">
-                <SiTwitter size="24" title="Twitter" />
-                <span className="ml-2">@P45QU10U</span>
+              <a href="https://www.facebook.com/homecano" className="flex">
+                <SiFacebook size="24" title="Facebook" />
+                <span className="ml-2">Ho'Mecano</span>
               </a>
             </li>
           </ul>
