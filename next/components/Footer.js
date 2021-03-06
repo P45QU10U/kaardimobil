@@ -1,14 +1,13 @@
 import Link from 'next/link';
-import { useContext } from 'react';
 import { SiTwitter } from 'react-icons/si';
+import { useAppContext } from '../pages/_app';
 import { Container, Section } from './designSystem/layout';
 import { menu } from './menu/Menu';
-import { ParamStore } from '../pages/_app';
 import Openinghours from './Openinghours';
 
 export default function Footer() {
-  const params = useContext(ParamStore);
-  const { address } = params;
+  const params = useAppContext();
+  const { name, address, openinghours, phonenumber } = params;
 
   return (
     <Container className="bg-gray-50 bg-opacity-80">
@@ -16,20 +15,20 @@ export default function Footer() {
         <div className="mb-4 md:border-r-2 border-gray-300">
           <h4>Coordonnées</h4>
           <p>
-            {params.name}
+            {name}
             <br />
             {[address.streetNo, address.street].join(' ')}
             <br />
             {[address.postalcode, address.city].join(' ')}
           </p>
           <abbr title="Numéro de téléphone">Tél. :</abbr>{' '}
-          <a href={`tel:+33${params.phonenumber.slice(1)}`}>
-            {params.phonenumber.split(/(?=(?:..)*$)/).join(' ')}
+          <a href={`tel:+33${phonenumber.slice(1)}`}>
+            {phonenumber.split(/(?=(?:..)*$)/).join(' ')}
           </a>
         </div>
         <div className="mb-4 md:border-r-2 border-gray-300">
           <h4>Horaires</h4>
-          <Openinghours opendays={params.openinghours} />
+          <Openinghours opendays={openinghours} />
         </div>
         <div id="footermap" className="mb-4">
           <h4>Plan du site</h4>

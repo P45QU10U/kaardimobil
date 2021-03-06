@@ -46,14 +46,27 @@ export default {
     },
     {
       name: 'interventiondistance',
-      title: 'Distance max intervention',
-      type: 'number',
+      title: 'Distance/cout intervention',
+      type: "array",
+      of: [
+        {
+          title: "Variant",
+          type: "interventioncosts",
+        },
+      ],
+      
     },
     {
       name: 'socialnetworks',
       title: 'réseaux sociaux',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'socialnetwork' }] }],
+    },
+    {
+      name: 'offers',
+      title: 'Messages',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'offers' }] }],
     },
   ],
 };
