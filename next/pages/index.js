@@ -74,7 +74,7 @@ export default function Index({ data, preview }) {
         <title>{name}</title>
         <meta
           name="description"
-          content="Homecano, c'est 95% de l'entretien d'un véhicule, où vous voulez"
+          content="Ho'Mecano, garage mobile tous véhicules, où vous le souhaitez"
         />
       </Head>
 
@@ -117,7 +117,7 @@ export default function Index({ data, preview }) {
           <li>
             <FaCheckCircle className="inline text-green-600" /> Ne répare que ce
             qui est nécessaire. On prend soin de notre{' '}
-            <span role="image" title="terre">
+            <span role="img" aria-label="terre">
               🌍
             </span>
           </li>
