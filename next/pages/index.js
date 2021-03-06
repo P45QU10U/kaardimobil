@@ -10,6 +10,7 @@ import {
   FaCashRegister,
   FaCheckCircle,
   FaStopwatch,
+  FaShippingFast,
 } from 'react-icons/fa';
 import { Section } from '../components/designSystem/layout';
 import { useAppContext } from './_app';
@@ -174,6 +175,29 @@ export default function Index({ data, preview }) {
         </Section>
         <div className="absolute -bottom-16 -left-5 -right-5 h-24 bg-white transform  rotate-2" />
       </div>
+      <Section>
+        <FaShippingFast
+          className="text-orange-500 text-3xl mb-4"
+          title="chronomètre"
+        />
+        <h2 className="uppercase text-2xl text-orange-500">
+          Vous êtes pressés ?
+        </h2>
+        <h3 className="text-6xl font-extrabold">Prise de rendez-vous rapide</h3>
+
+        <div className="grid grid-cols-2 gap-2">
+          <p className="text-gray-500 text-2xl">
+            Sur votre lieu de travail, pendant vos courses. Selon vos besoins,
+            nous pouvons planifier au mieux votre rendez-vous.
+          </p>
+        </div>
+
+        <Link href="/contact">
+          <a className="text-xl text-orange-500 no-underline inline-block mb-12 border-orange-500 hover:border-orange-700 hover:text-orange-700 hover:shadow-sm border-2 p-3 rounded-lg">
+            Prendre rendez-vous <FaArrowCircleRight className="inline ml-2" />
+          </a>
+        </Link>
+      </Section>
     </>
   );
 }
