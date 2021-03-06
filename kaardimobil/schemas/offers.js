@@ -19,6 +19,11 @@ export default {
       description: 'Descriptif promotion',
     },
     {
+      name: 'image',
+      title: 'image promotion',
+      type: 'image',
+    },
+    {
       name: 'reduction',
       title: 'Montant réduction (en €)',
       type: 'number',

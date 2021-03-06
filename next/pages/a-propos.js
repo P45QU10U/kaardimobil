@@ -1,3 +1,9 @@
+import Coords from '../components/Coords';
+
 export default function Apropos() {
-  return <div>A propos de quoi</div>;
+  return (
+    <>
+      <Coords />
+    </>
+  );
 }

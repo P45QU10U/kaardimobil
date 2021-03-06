@@ -12,7 +12,8 @@ export default {
     {
       name: 'description',
       title: 'Notes, descriptif',
-      type: 'string',
+      type: 'array',
+      of: [{type: 'block'}]
     },
     {
       title: "Défaut",

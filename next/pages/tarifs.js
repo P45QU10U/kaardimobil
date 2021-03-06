@@ -5,13 +5,6 @@ import Servicedetails from '../components/Servicedetails';
 import { Section } from '../components/designSystem/layout';
 import { getClient, usePreviewSubscription } from '../lib/sanity';
 
-const postQuery = groq`*[_type == 'services']{
-  name,
-  description,
-  defaultProductVariant{price, title},
-  variants,
-  'category': category->name
-} | order(category asc)`;
 /* 
 *[_type == 'services']{
   ...,
@@ -19,13 +12,27 @@ const postQuery = groq`*[_type == 'services']{
 }
 */
 
+const postQuery = groq`*[_type == 'services']{
+  name,
+  description,
+  defaultProductVariant{price, title},
+  variants,
+  'category': category->name
+} | order(category asc)`;
+
 export default function Prestations({ data, preview }) {
   // const { data: services } = usePreviewSubscription(postQuery, {
   //   initialData: data,
   //   enabled: preview,
   // });
+  const { data: services } = usePreviewSubscription(postQuery, {
+    initialData: data,
+    enabled: preview,
+  });
 
-  const categories = new Set(data.map((e) => e.category));
+  console.log(data)
+
+  const categories = new Set(services.map((e) => e.category));
 
   return (
     <Section>

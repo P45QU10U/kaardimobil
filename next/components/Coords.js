@@ -6,7 +6,7 @@ export default function Coords(params) {
   return (
     <>
       <Section className="md:mt-8 relative">
-        <figure className="grid grid-cols-1 md:grid-cols-3 bg-white rounded-xl shadow-lg">
+        <figure className="grid grid-cols-1 md:grid-cols-3 border border-gray-200 rounded-xl shadow-lg">
           <div className="mx-auto h-48 w-48 md:h-auto md:w-auto col-span-1 p-8 m-4 overflow-hidden md:p-0 md:m-0 md:rounded-none md:rounded-l-xl relative">
             <Img
               src="/images/seb.jpg"

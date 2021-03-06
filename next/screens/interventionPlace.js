@@ -9,9 +9,11 @@ import { FullPageSpinner } from '../components/lib';
 import { AddressRow } from '../components/addressRow';
 import { AdvertDistance } from '../components/AdvertDistance';
 import { client } from '../utils/api-fetch-external';
+import { useInterventionContext } from '../context/InterventionContext';
 
 function InterventionPlaceScreen({ center, distanceMax }) {
-  const [userPosition, setUserPosition] = useState(null);
+  const { intervention, updateAddress } = useInterventionContext();
+
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const {
     data,
@@ -79,62 +81,46 @@ function InterventionPlaceScreen({ center, distanceMax }) {
       }
     },
     onSelectedItemChange: ({ selectedItem }) => {
-      setUserPosition(selectedItem?.geometry?.coordinates);
+      // setUserPosition(selectedItem);
+      updateAddress(selectedItem);
     },
     // onStateChange: (e) => console.log('stateChange', e)
   });
 
   return (
-    <>
-      <h2>Veuillez renseigner votre adresse</h2>
-      <div {...getComboboxProps()}>
-        <label htmlFor="address">Adresse</label>{' '}
-        <input
-          id="address"
-          {...getInputProps()}
-          placeholder="rue de la mare…"
-        />
-        <button
-          type="button"
-          onClick={() => {
-            setDebouncedQuery('');
-            setData([]);
-            setUserPosition(null);
-            reset();
-          }}
-          aria-label="effacer l'addresse"
-        >
-          <FaTimes />
-        </button>
-      </div>
-      {isLoading ? (
-        <FullPageSpinner />
-      ) : (
-        <ul {...getMenuProps()}>
-          {isOpen &&
-            dataToWorkWith.map((item, index) => (
-              <span key={item.properties.id} {...getItemProps({ item, index })}>
-                <li
-                  style={
-                    highlightedIndex === index ? { background: '#ede' } : {}
-                  }
-                >
-                  <h4>{item.properties.label}</h4>
-                </li>
-              </span>
-            ))}
-        </ul>
-      )}
-      {selectedItem !== null ? (
-        <AdvertDistance
-          center={center}
-          distanceMax={distanceMax}
-          userPosition={userPosition}
-        />
-      ) : (
-        ''
-      )}
-    </>
+    <div {...getComboboxProps()}>
+      <label htmlFor="address">Adresse, ville</label>{' '}
+      <input id="address" {...getInputProps()} placeholder="rue de la mare…" />
+      <button
+        type="button"
+        onClick={() => {
+          setDebouncedQuery('');
+          setData([]);
+          updateAddress(null);
+          reset();
+        }}
+        aria-label="effacer l'addresse"
+      >
+        <FaTimes />
+      </button>
+      <ul {...getMenuProps()}>
+        {isLoading ? (
+          <FullPageSpinner />
+        ) : (
+          isOpen &&
+          dataToWorkWith.map((item, index) => (
+            <span key={item.properties.id} {...getItemProps({ item, index })}>
+              <li
+                style={highlightedIndex === index ? { background: '#ede' } : {}}
+              >
+                <h4>{item.properties.label}</h4>
+              </li>
+            </span>
+          ))
+        )}
+      </ul>
+      {intervention.address !== null ? <AdvertDistance /> : ''}
+    </div>
   );
 }
 

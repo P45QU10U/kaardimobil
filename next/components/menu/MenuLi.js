@@ -5,9 +5,9 @@ export default function MenuLi({ currentpage, children }) {
     <li
       className={`${
         currentpage
-          ? 'border-blue-800 font-extrabold md:border-solid md:border-b-4'
+          ? 'border-gray-800 font-extrabold md:border-solid md:border-b-4'
           : null
-      } m-2 md:mr-2 text-blue-800 uppercase md:font-bold`}
+      } m-2 md:mr-2 text-gray-800 uppercase md:font-bold`}
     >
       {children}
     </li>

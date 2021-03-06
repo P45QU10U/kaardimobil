@@ -21,8 +21,8 @@ export default function Skeleton({ children }) {
         <meta name="description" content="Homecano, Garage à domicile" />
       </Head>
 
-      <div className="relative min-h-half">
-        <div className="absolute inset-0 overflow-hidden bg-cyan-400 bg-opacity-40">
+      <div className="relative">
+        <div className="absolute inset-0 overflow-hidden bg-orange-300 bg-opacity-40">
           <Img
             layout="fill"
             // layout="responsive"

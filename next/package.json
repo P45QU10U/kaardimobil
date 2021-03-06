@@ -1,5 +1,5 @@
 {
-  "name": "nornand",
+  "name": "kaardi",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
   "dependencies": {
     "@reach/skip-nav": "^0.12.1",
     "@reach/tooltip": "^0.12.1",
+    "@sanity/block-content-to-react": "^2.0.7",
     "@turf/distance": "^6.3.0",
     "@turf/helpers": "^6.3.0",
     "autoprefixer": "^10.2.4",
@@ -19,6 +20,7 @@
     "next-sanity": "^0.1.8",
     "postcss": "^8.2.5",
     "react": "17.0.1",
+    "react-confetti": "^6.0.1",
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",
     "tailwindcss": "^2.0.3"
