@@ -78,7 +78,7 @@ export default function Index({ data, preview }) {
         />
       </Head>
 
-      <Section>
+      <Section className="mb-8">
         <FaStopwatch
           className="text-orange-500 text-3xl mb-4"
           title="chronomètre"
@@ -123,6 +123,7 @@ export default function Index({ data, preview }) {
           </li>
         </ul>
       </Section>
+<<<<<<< Updated upstream
 
       <Section className="mt-8 relative">
         <FaLocationArrow
@@ -145,6 +146,35 @@ export default function Index({ data, preview }) {
           distanceMax={interventiondistance}
         />
       </Section>
+=======
+      <div className="relative mt- overflow-hidden">
+        <div className="absolute -left-10 -right-10 topography h-full transform rotate-2" />
+
+        <Section className="mt-24 mb-24 relative bg-opacity-60 bg-white ">
+          <FaLocationArrow
+            className="text-gray-400 text-3xl mb-4"
+            title="direction"
+          />
+          <h2 className="uppercase text-2xl text-gray-400">Atelier mobile</h2>
+          <h3 className="text-6xl font-extrabold text-transparent bg-gradient-to-t bg-clip-text from-orange-700 to-orange-500">
+            C'est le mécanicien qui vient à vous
+          </h3>
+          <p className="text-gray-500 text-2xl">
+            Je me déplace dans un rayon de {distancemax}km autour de mon
+            domicile
+          </p>
+
+          <p className="text-gray-500 text-2xl">
+            Renseignez votre lieu d'intervention
+          </p>
+          <InterventionPlace
+            center={geocoords}
+            distanceMax={interventiondistance}
+          />
+        </Section>
+        <div className="absolute -bottom-16 -left-5 -right-5 h-24 bg-white transform  rotate-2" />
+      </div>
+>>>>>>> Stashed changes
 
       <div className="grid relative overflow-hidden">
         <div className="absolute mt-8 inset-0 -ml-24 -mr-24 bg-orange-300 transform rotate-2" />
