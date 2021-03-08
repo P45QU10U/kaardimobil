@@ -123,7 +123,6 @@ export default function Index({ data, preview }) {
           </li>
         </ul>
       </Section>
-<<<<<<< Updated upstream
 
       <Section className="mt-8 relative">
         <FaLocationArrow
@@ -146,7 +145,7 @@ export default function Index({ data, preview }) {
           distanceMax={interventiondistance}
         />
       </Section>
-=======
+
       <div className="relative mt- overflow-hidden">
         <div className="absolute -left-10 -right-10 topography h-full transform rotate-2" />
 
@@ -172,9 +171,9 @@ export default function Index({ data, preview }) {
             distanceMax={interventiondistance}
           />
         </Section>
+
         <div className="absolute -bottom-16 -left-5 -right-5 h-24 bg-white transform  rotate-2" />
       </div>
->>>>>>> Stashed changes
 
       <div className="grid relative overflow-hidden">
         <div className="absolute mt-8 inset-0 -ml-24 -mr-24 bg-orange-300 transform rotate-2" />

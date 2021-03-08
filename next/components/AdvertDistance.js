@@ -1,6 +1,7 @@
 import { point } from '@turf/helpers';
 import distance from '@turf/distance';
 import Confetti from 'react-confetti';
+import useWindowSize from 'react-use/lib/useWindowSize';
 import { useInterventionContext } from '../context/InterventionContext';
 import { useAppContext } from '../pages/_app';
 
@@ -36,6 +37,8 @@ function AdvertDistance() {
   );
   console.log('what', whatprice);
 
+  const { width, height } = useWindowSize();
+
   if (whatprice) {
     const affichDist = Math.round(distanceUserToCenter);
 
@@ -50,8 +53,8 @@ function AdvertDistance() {
             <Confetti
               colors={['#ef7d00', '#ee7f00', '#a3a3a3', '#dadada', '#5f5f5f']}
               numberOfPieces={128}
-              height={window.innerHeight}
-              width={window.innerWidth}
+              height={height}
+              width={width}
               recycle={false}
             />
             <span>

@@ -22,6 +22,7 @@ export default function Skeleton({ children }) {
       </Head>
 
       <div className="relative">
+        {/* <div className="absolute -top-16 -left-10 -right-10 h-1/2 bg-gradient-to-tl from-orange-500 to-orange-300 transform  rotate-2" /> */}
         <div className="absolute inset-0 overflow-hidden bg-orange-300 bg-opacity-40">
           <Img
             layout="fill"
