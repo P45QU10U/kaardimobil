@@ -86,7 +86,13 @@ function AdvertDistance() {
           <>
             <div>
               <p className="text-xl">
-                Merveilleux. Nous ne sommes qu'à {affichDist}km l'un de l'autre.
+                <button type="button" onClick={onClick}>
+                  <span role="img" aria-label="étincelles">
+                    ✨
+                  </span>
+                  Merveilleux.
+                </button>{' '}
+                Nous ne sommes qu'à {affichDist}km l'un de l'autre.
               </p>
               <p>Frais de déplacement applicables {whatprice[1]}€</p>
               <div className="grid grid-cols-1 md:grid-cols-2">
@@ -96,13 +102,6 @@ function AdvertDistance() {
                     <FaArrowAltCircleRight className="inline ml-2" />
                   </a>
                 </Link>
-                <button
-                  type="button"
-                  className="rounded-lg border border-black"
-                  onClick={onClick}
-                >
-                  Célébrer cette bonne nouvelle.
-                </button>
               </div>
               {animation ? (
                 <Confetti
