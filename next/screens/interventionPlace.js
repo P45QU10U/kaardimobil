@@ -13,8 +13,8 @@ import { useInterventionContext } from '../context/InterventionContext';
 
 function InterventionPlaceScreen({ center, distanceMax }) {
   const { intervention, updateAddress } = useInterventionContext();
-
   const [debouncedQuery, setDebouncedQuery] = useState('');
+
   const {
     data,
     setData,
@@ -88,34 +88,47 @@ function InterventionPlaceScreen({ center, distanceMax }) {
   });
 
   return (
-    <div {...getComboboxProps()}>
+    <div {...getComboboxProps()} className="grid grid-cols-1">
       <label htmlFor="address">Adresse, ville</label>{' '}
-      <input id="address" {...getInputProps()} placeholder="rue de la mare…" />
-      <button
-        type="button"
-        onClick={() => {
-          setDebouncedQuery('');
-          setData([]);
-          updateAddress(null);
-          reset();
-        }}
-        aria-label="effacer l'addresse"
-      >
-        <FaTimes />
-      </button>
-      <ul {...getMenuProps()}>
+      <div className="flex">
+        <input
+          className="flex-grow inline-block h-12"
+          id="address"
+          {...getInputProps()}
+          placeholder="rue de la mare…"
+        />
+        <button
+          className="w-12 grid place-items-center"
+          type="button"
+          onClick={() => {
+            setDebouncedQuery('');
+            setData([]);
+            updateAddress(null);
+            reset();
+          }}
+          aria-label="effacer l'addresse"
+        >
+          <FaTimes className="w-5" />
+        </button>
+      </div>
+      <ul {...getMenuProps()} className="leading-10">
         {isLoading ? (
           <FullPageSpinner />
         ) : (
           isOpen &&
           dataToWorkWith.map((item, index) => (
-            <span key={item.properties.id} {...getItemProps({ item, index })}>
-              <li
-                style={highlightedIndex === index ? { background: '#ede' } : {}}
-              >
-                <h4>{item.properties.label}</h4>
-              </li>
-            </span>
+            <li
+              className="border-orange-700 border-b"
+              key={item.properties.id}
+              {...getItemProps({ item, index })}
+              style={
+                highlightedIndex === index
+                  ? { background: 'rgba(239, 125, 0, 0.3)', color: 'black' }
+                  : {}
+              }
+            >
+              <span>{item.properties.label}</span>
+            </li>
           ))
         )}
       </ul>

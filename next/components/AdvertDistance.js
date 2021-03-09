@@ -1,12 +1,48 @@
 import { point } from '@turf/helpers';
 import distance from '@turf/distance';
+
+import { useEffect, useRef, useState } from 'react';
 import Confetti from 'react-confetti';
-import useWindowSize from 'react-use/lib/useWindowSize';
+import Link from 'next/link';
+import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { useInterventionContext } from '../context/InterventionContext';
 import { useAppContext } from '../pages/_app';
 
 function AdvertDistance() {
-  // console.log('userposition', userPosition?.geometry?.coordinates);
+  const [coords, setCoords] = useState(undefined);
+  const [pieces, setPieces] = useState(0);
+  const [count, setCount] = useState(0);
+  const [animation, setAnimation] = useState(true);
+  const alertRef = useRef();
+
+  useEffect(() => {
+    setCoords({
+      x: alertRef.current
+        ? alertRef.current.offsetLeft + alertRef.current.offsetWidth / 2
+        : 0,
+      y: alertRef.current
+        ? alertRef.current.offsetTop - alertRef.current.offsetHeight
+        : 0,
+      w: 20,
+      h: 10,
+    });
+  }, [setCoords]);
+
+  function onClick(ev) {
+    setCount(count + 1);
+    setPieces(pieces + 24);
+    setCoords({
+      x: ev.clientX,
+      y: ev.clientY - 40,
+      w: 20,
+      h: 10,
+    });
+    setAnimation(true);
+  }
+  function onComplete() {
+    setPieces(0);
+    setAnimation(false);
+  }
 
   const { interventiondistance, geocoords } = useAppContext();
   const { intervention } = useInterventionContext();
@@ -24,7 +60,7 @@ function AdvertDistance() {
     ? intervention?.address?.geometry?.coordinates
     : [0, 0];
 
-  console.log('coordonnees', lngUsr, latUser);
+  // console.log('coordonnees', lngUsr, latUser);
 
   const from = point([geocoords.lat, geocoords.lng]);
   const to = point([latUser, lngUsr]);
@@ -35,33 +71,56 @@ function AdvertDistance() {
   const [whatprice] = possibleDistances.filter(
     (a) => a[0] > distanceUserToCenter
   );
-  console.log('what', whatprice);
-
-  const { width, height } = useWindowSize();
+  // console.log('what', whatprice);
 
   if (whatprice) {
     const affichDist = Math.round(distanceUserToCenter);
 
     return intervention.adress !== null ? (
-      <div role="alert">
+      <div role="alert" ref={alertRef}>
         {distanceUserToCenter > whatprice[0] ? (
           <span>
             Quel dommage, nous sommes un peu trop éloignés. ({affichDist}kms)
           </span>
         ) : (
-          <div>
-            <Confetti
-              colors={['#ef7d00', '#ee7f00', '#a3a3a3', '#dadada', '#5f5f5f']}
-              numberOfPieces={128}
-              height={height}
-              width={width}
-              recycle={false}
-            />
-            <span>
-              Merveilleux. Nous ne sommes qu'à {affichDist}km l'un de l'autre.
-              Frais de déplacement applicables {whatprice[1]}€
-            </span>
-          </div>
+          <>
+            <div>
+              <p className="text-xl">
+                Merveilleux. Nous ne sommes qu'à {affichDist}km l'un de l'autre.
+              </p>
+              <p>Frais de déplacement applicables {whatprice[1]}€</p>
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <Link href="/contact">
+                  <a className="text-xl text-orange-500 no-underline inline-block mb-12 border-orange-500 hover:border-orange-700 hover:text-orange-700 hover:shadow-sm border-2 p-3 rounded-lg">
+                    Prendre rendez-vous{' '}
+                    <FaArrowAltCircleRight className="inline ml-2" />
+                  </a>
+                </Link>
+                <button
+                  type="button"
+                  className="rounded-lg border border-black"
+                  onClick={onClick}
+                >
+                  Célébrer cette bonne nouvelle.
+                </button>
+              </div>
+              {animation ? (
+                <Confetti
+                  colors={[
+                    '#ef7d00',
+                    '#ee7f00',
+                    '#a3a3a3',
+                    '#dadada',
+                    '#5f5f5f',
+                  ]}
+                  numberOfPieces={128}
+                  confettiSource={coords}
+                  recycle={false}
+                  onConfettiComplete={onComplete}
+                />
+              ) : null}
+            </div>
+          </>
         )}
       </div>
     ) : null;

@@ -12,6 +12,7 @@ import {
   FaStopwatch,
   FaShippingFast,
 } from 'react-icons/fa';
+import { useState } from 'react';
 import { Section } from '../components/designSystem/layout';
 import { useAppContext } from './_app';
 
@@ -124,32 +125,9 @@ export default function Index({ data, preview }) {
         </ul>
       </Section>
 
-      <Section className="mt-8 relative">
-        <FaLocationArrow
-          className="text-gray-400 text-3xl mb-4"
-          title="direction"
-        />
-        <h2 className="uppercase text-2xl text-gray-400">Atelier mobile</h2>
-        <h3 className="text-6xl font-extrabold text-transparent bg-gradient-to-t bg-clip-text from-orange-700 to-orange-500">
-          C'est le mécanicien qui vient à vous
-        </h3>
-        <p className="text-gray-500 text-2xl">
-          Je me déplace dans un rayon de {distancemax}km autour de mon domicile
-        </p>
-
-        <p className="text-gray-500 text-2xl">
-          Renseignez votre lieu d'intervention
-        </p>
-        <InterventionPlace
-          center={geocoords}
-          distanceMax={interventiondistance}
-        />
-      </Section>
-
-      <div className="relative mt- overflow-hidden">
+      <div className="relative mt-8 overflow-hidden">
         <div className="absolute -left-10 -right-10 topography h-full transform rotate-2" />
-
-        <Section className="mt-24 mb-24 relative bg-opacity-60 bg-white ">
+        <Section className="mt-24 mb-24 p-4 relative bg-opacity-80 bg-white rounded-md">
           <FaLocationArrow
             className="text-gray-400 text-3xl mb-4"
             title="direction"
@@ -162,6 +140,12 @@ export default function Index({ data, preview }) {
             Je me déplace dans un rayon de {distancemax}km autour de mon
             domicile
           </p>
+          <ul className="text-xl">
+            <li>
+              <FaCheckCircle className="inline text-2xl text-orange-700" />{' '}
+              Opère dans un rayon de 45km autour de Pleugueneuc
+            </li>
+          </ul>
 
           <p className="text-gray-500 text-2xl">
             Renseignez votre lieu d'intervention
@@ -194,6 +178,8 @@ export default function Index({ data, preview }) {
           <p className="text-gray-500 text-2xl">
             Chez Ho'Mecano, on ne vous changera que le fusible.
           </p>
+
+          <p>Mettre un tab avec deux exemples de prix.</p>
 
           <Link href="/tarifs">
             <a className="text-xl text-cyan-800 no-underline inline-block mb-12 border-cyan-800 hover:border-cyan-900 hover:text-cyan-900 hover:shadow-md border-2 p-3 rounded-lg">
