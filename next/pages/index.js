@@ -17,7 +17,7 @@ import { Section } from '../components/designSystem/layout';
 import { useAppContext } from './_app';
 
 // import { getSortedPostsData } from '../lib/posts'
-import InterventionPlace from '../screens/interventionPlace';
+import InterventionPlace from '../components/interventionPlace';
 
 import {
   getClient,

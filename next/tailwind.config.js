@@ -7,7 +7,9 @@ module.exports = {
     ringColor: {
       white: colors.white,
       pink: colors.fuchsia,
+      orange: colors.orange,
     },
+
     extend: {
       fontFamily: {
         different: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
