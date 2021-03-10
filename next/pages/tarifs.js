@@ -30,12 +30,13 @@ export default function Prestations({ data, preview }) {
     enabled: preview,
   });
 
-  console.log(data)
+  console.log(data);
 
   const categories = new Set(services.map((e) => e.category));
 
   return (
     <Section>
+      <h2>Tarifs</h2>
       {Array.from(categories, (e, index) => (
         <Servicedetails
           key={`gt${index}`}

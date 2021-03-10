@@ -6,6 +6,7 @@ import { FaPhone } from 'react-icons/fa';
 import MenuLi from './MenuLi';
 import SvgMenuIcon from './SvgMenuIcon';
 import { useAppContext } from '../../pages/_app';
+import Promotions from '../Promotions';
 
 export const menu = [
   {
@@ -27,8 +28,6 @@ export const menu = [
   },
 ];
 
-const Subline = 'Garage mobile';
-
 export default function Menu() {
   const { name, phonenumber } = useAppContext();
 
@@ -45,26 +44,24 @@ export default function Menu() {
   return (
     <nav>
       <div className="grid grid-cols-2 p-4 items-center md:flex md:gap-2">
-        <div className="flex gap-3 text-left text-4xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-3 text-left text-4xl">
           <Link href="/">
             <a href="/" className="flex gap-2 items-center no-underline">
               <Img
-                width="400"
-                height="400"
-                className="text-xs"
+                width="350"
+                height="350"
                 src="/images/homecano.png"
                 alt={`logo ${name}`}
               />
             </a>
           </Link>
-          <div className="grid gap-1 items-center">
-            <span>{name}</span>
-            <span className="text-sm">{Subline}</span>
-            <a className="text-sm" href={`tel:+33${phonenumber.slice(1)}`}>
-              <FaPhone title="telephone" className="inline" />{' '}
-              {phonenumber.split(/(?=(?:..)*$)/).join(' ')}
-            </a>
-          </div>
+          <a
+            className="text-sm md:text-base text-center"
+            href={`tel:+33${phonenumber.slice(1)}`}
+          >
+            <FaPhone title="telephone" className="inline" />{' '}
+            {phonenumber.split(/(?=(?:..)*$)/).join(' ')}
+          </a>
         </div>
         <div className="grid justify-items-end md:hidden">
           <button

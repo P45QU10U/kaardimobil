@@ -3,34 +3,25 @@ import classnames from 'classnames';
 import Menu from './menu/Menu';
 import { maxWidthSections } from './designSystem/theme';
 import Coords from './Coords';
-import { useAppContext } from '../pages/_app';
+
 import { Section } from './designSystem/layout';
+import { BackgroundImage } from './BackgroundImage';
+import Promotions from './Promotions';
 
 export default function Header() {
-  const { promotions } = useAppContext();
-  const {
-    description,
-    name,
-    promocode,
-    startduration,
-    endduration,
-  } = promotions[0];
-
   return (
-    <>
-      <header className={classnames(maxWidthSections, 'relative')}>
-        <Menu />
-      </header>
-      <Section className="relative md:w-1/2">
-        <div className="text-center bg-white p-2 border-2 border-gray-400">
-          <h2 className="text-2xl">{name}</h2>
-          <p className="text-xl">{description}</p>
-          <p className="text-xl">
-            Code promo <span className="font-bold">{promocode}</span>
-          </p>
-        </div>
-      </Section>
-      {/* <Coords /> */}
-    </>
+    <div>
+      <div className="relative">
+        {/* <div className="absolute -top-16 -left-10 -right-10 h-1/2 bg-gradient-to-tl from-orange-500 to-orange-300 transform  rotate-2" /> */}
+        {/* <BackgroundImage bgopacity="bg-opacity-100" bgcolor="bg-orange-400" /> */}
+        <BackgroundImage src="/images/jesse-bowser-c0I4ahyGIkA-unsplash.jpg" />
+
+        <header className={classnames(maxWidthSections, 'relative')}>
+          <Menu />
+        </header>
+        <Promotions />
+        {/* <Coords /> */}
+      </div>
+    </div>
   );
 }

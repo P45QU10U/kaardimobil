@@ -7,11 +7,10 @@ import Link from 'next/link';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { useInterventionContext } from '../context/InterventionContext';
 import { useAppContext } from '../pages/_app';
+import { ContactLink } from './Links';
 
 function AdvertDistance() {
   const [coords, setCoords] = useState(undefined);
-  const [pieces, setPieces] = useState(0);
-  const [count, setCount] = useState(0);
   const [animation, setAnimation] = useState(true);
   const alertRef = useRef();
 
@@ -20,27 +19,22 @@ function AdvertDistance() {
       x: alertRef.current
         ? alertRef.current.offsetLeft + alertRef.current.offsetWidth / 2
         : 0,
-      y: alertRef.current
-        ? alertRef.current.offsetTop - alertRef.current.offsetHeight
-        : 0,
+      y: alertRef.current ? alertRef.current.offsetTop : 0,
       w: 20,
       h: 10,
     });
-  }, [setCoords]);
+  });
 
   function onClick(ev) {
-    setCount(count + 1);
-    setPieces(pieces + 24);
     setCoords({
       x: ev.clientX,
-      y: ev.clientY - 40,
+      y: ev.clientY,
       w: 20,
       h: 10,
     });
     setAnimation(true);
   }
   function onComplete() {
-    setPieces(0);
     setAnimation(false);
   }
 
@@ -60,18 +54,14 @@ function AdvertDistance() {
     ? intervention?.address?.geometry?.coordinates
     : [0, 0];
 
-  // console.log('coordonnees', lngUsr, latUser);
-
   const from = point([geocoords.lat, geocoords.lng]);
   const to = point([latUser, lngUsr]);
   const options = { units: 'kilometers' };
-  console.log('advertdistanceintervention', intervention, distance);
   const distanceUserToCenter = to ? distance(from, to, options) : '';
 
   const [whatprice] = possibleDistances.filter(
     (a) => a[0] > distanceUserToCenter
   );
-  // console.log('what', whatprice);
 
   if (whatprice) {
     const affichDist = Math.round(distanceUserToCenter);
@@ -96,12 +86,7 @@ function AdvertDistance() {
               </p>
               <p>Frais de déplacement applicables {whatprice[1]}€</p>
               <div className="grid grid-cols-1 md:grid-cols-2">
-                <Link href="/contact">
-                  <a className="text-xl text-orange-500 no-underline inline-block mb-12 border-orange-500 hover:border-orange-700 hover:text-orange-700 hover:shadow-sm border-2 p-3 rounded-lg">
-                    Prendre rendez-vous{' '}
-                    <FaArrowAltCircleRight className="inline ml-2" />
-                  </a>
-                </Link>
+                <ContactLink>Prendre rendez-vous</ContactLink>
               </div>
               {animation ? (
                 <Confetti

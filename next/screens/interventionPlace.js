@@ -111,14 +111,16 @@ function InterventionPlaceScreen({ center, distanceMax }) {
           <FaTimes className="w-5" />
         </button>
       </div>
-      <ul {...getMenuProps()} className="leading-10">
+      <ul
+        {...getMenuProps()}
+        className="leading-10 divide-y-2 divide-dotted divide-orange-700"
+      >
         {isLoading ? (
           <FullPageSpinner />
         ) : (
           isOpen &&
           dataToWorkWith.map((item, index) => (
             <li
-              className="border-orange-700 border-b"
               key={item.properties.id}
               {...getItemProps({ item, index })}
               style={
