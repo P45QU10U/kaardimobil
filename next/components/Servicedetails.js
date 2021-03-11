@@ -43,7 +43,7 @@ const BlockRenderer = (props) => {
 
 export default function Categoryservice({ services, category }) {
   return (
-    <div className="mb-4 p-4">
+    <div className="mb-4 space-y-2">
       <h3>{category}</h3>
       {services.map((d, i) => (
         <div key={i} className="border-orange-700 border-b-2">

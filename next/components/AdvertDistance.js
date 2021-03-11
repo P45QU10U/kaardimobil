@@ -70,6 +70,9 @@ function AdvertDistance() {
       <div role="alert" ref={alertRef}>
         {distanceUserToCenter > whatprice[0] ? (
           <span>
+            <span role="img" aria-label="Personne déçue">
+              🙍
+            </span>
             Quel dommage, nous sommes un peu trop éloignés. ({affichDist}kms)
           </span>
         ) : (
@@ -109,7 +112,14 @@ function AdvertDistance() {
       </div>
     ) : null;
   }
-  return <div>Quel dommage, nous sommes trop loin l'un de l'autre</div>;
+  return (
+    <div>
+      <span role="img" aria-label="Personne déçue">
+        🙍
+      </span>{' '}
+      Quel dommage, nous sommes trop loin l'un de l'autre
+    </div>
+  );
 }
 
 export { AdvertDistance };

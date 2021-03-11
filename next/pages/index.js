@@ -5,6 +5,8 @@ import Img from 'next/image';
 import { groq } from 'next-sanity';
 
 import {
+  FaRunning,
+  FaFeather,
   FaLocationArrow,
   FaArrowCircleRight,
   FaCashRegister,
@@ -55,7 +57,7 @@ export default function Index({ data, preview }) {
   //   enabled: preview,
   // });
 
-  const { name, geocoords, interventiondistance } = useAppContext();
+  const { name, address, geocoords, interventiondistance } = useAppContext();
 
   const possibleDistances = interventiondistance
     .map((e) => [e.distance, e.price])
@@ -85,49 +87,41 @@ export default function Index({ data, preview }) {
           title="chronomètre"
         />
         <h2 className="uppercase text-2xl text-orange-500">Gagnez du temps</h2>
-        <h3 className="text-6xl font-extrabold">N'attendez plus au garage</h3>
+        <h3 className="pb-2 text-6xl font-extrabold text-transparent bg-gradient-to-t bg-clip-text from-orange-700 to-orange-500">
+          N'attendez plus au garage
+        </h3>
 
-        <div className="grid grid-cols-2 gap-2">
-          <p className="text-gray-500 text-2xl">
-            C'est le garage qui vient à vous. Après, si vous m'amenez à
-            travailler ici, le bruit des vagues aidera le temps de la
-            réparation.
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div className="relative place-self-center">
             <Img
               layout="intrinsic"
-              width="200"
-              height="200"
+              width="300"
+              height="300"
               className="rounded-lg"
               objectFit="cover"
               alt="Combi Volkswagen au bord de la mer"
               src="/images/geoffroy-hauwen-Upg453Fo7wU-unsplash.jpg"
             />
           </div>
+          <div className="flex flex-col justify-around ">
+            <p className="text-gray-500 text-2xl">
+              C'est le garage qui vient à vous. Après, si vous m'amenez à
+              travailler ici, le bruit des vagues aidera le temps de la
+              réparation.
+            </p>
+            <Link href="/contact">
+              <a className="text-xl text-orange-500 no-underline flex items-center justify-items-center border-orange-500 hover:border-orange-700 hover:text-orange-700 hover:shadow-sm border-2 p-3 rounded-lg">
+                Prendre rendez-vous{' '}
+                <FaArrowCircleRight className="inline ml-2" />
+              </a>
+            </Link>
+          </div>
         </div>
-
-        <Link href="/contact">
-          <a className="text-xl text-orange-500 no-underline inline-block mb-12 border-orange-500 hover:border-orange-700 hover:text-orange-700 hover:shadow-sm border-2 p-3 rounded-lg">
-            Prendre rendez-vous <FaArrowCircleRight className="inline ml-2" />
-          </a>
-        </Link>
-        <ul className="text-xl">
-          <li>
-            <FaCheckCircle className="inline text-green-600" /> Chantier propre
-          </li>
-          <li>
-            <FaCheckCircle className="inline text-green-600" /> Ne répare que ce
-            qui est nécessaire. On prend soin de notre{' '}
-            <span role="img" aria-label="terre">
-              🌍
-            </span>
-          </li>
-        </ul>
       </Section>
 
       <div className="relative mt-8 overflow-hidden">
-        <div className="absolute -left-10 -right-10 topography h-full transform rotate-2" />
-        <Section className="mt-24 mb-24 p-4 relative bg-opacity-80 bg-white rounded-md">
+        <div className="absolute -left-10 -right-10 topography h-full" />
+        <Section className="mt-24 mb-24 relative bg-opacity-80 p-4 bg-white rounded-md">
           <FaLocationArrow
             className="text-gray-400 text-3xl mb-4"
             title="direction"
@@ -137,61 +131,53 @@ export default function Index({ data, preview }) {
             C'est le mécanicien qui vient à vous
           </h3>
           <p className="text-gray-500 text-2xl">
-            Je me déplace dans un rayon de {distancemax}km autour de mon
-            domicile
+            {name} opère dans un rayon de {distancemax}km autour de{' '}
+            {address.city}.
           </p>
-          <ul className="text-xl">
-            <li>
-              <FaCheckCircle className="inline text-2xl text-orange-700" />{' '}
-              Opère dans un rayon de 45km autour de Pleugueneuc
-            </li>
-          </ul>
 
-          <p className="text-gray-500 text-2xl">
-            Renseignez votre lieu d'intervention
+          <p className="text-gray-500 text-3xl mt-6">
+            Testez votre éligibilité.
           </p>
           <InterventionPlace
             center={geocoords}
             distanceMax={interventiondistance}
           />
         </Section>
-
-        <div className="absolute -bottom-16 -left-5 -right-5 h-24 bg-white transform  rotate-2" />
       </div>
 
-      <div className="grid relative overflow-hidden">
-        <div className="absolute mt-8 inset-0 -ml-24 -mr-24 bg-orange-300 transform rotate-2" />
-
+      <div className="grid bg-gradient-to-tr from-orange-300 to-orange-500 relative overflow-hidden mb-6">
         <Section className="relative mt-8 mb-12">
           <FaCashRegister
-            className="text-cyan-700 text-3xl mb-4"
+            className="text-gray-800 text-3xl mb-4"
             title="caisse enregistreuse"
           />
-          <h2 className="uppercase text-2xl text-cyan-800">
+          <h2 className="uppercase text-2xl text-gray-800">
             Tarifs attractifs
           </h2>
-          <h3 className="text-6xl font-extrabold">Des prix tout doux</h3>
-          <p className="text-gray-500 text-2xl">
+          <h3 className="text-6xl font-extrabold text-transparent bg-gradient-to-t bg-clip-text from-gray-800 to-gray-600">
+            Des prix tout doux
+          </h3>
+          <p className="text-gray-700 text-2xl">
             Votre facture sera plus légère. Si un fusible est grillé, le devis
             n'affichera pas un système électrique à remplacer.
           </p>
-          <p className="text-gray-500 text-2xl">
+          <p className="text-gray-700 text-2xl">
             Chez Ho'Mecano, on ne vous changera que le fusible.
           </p>
 
           <p>Mettre un tab avec deux exemples de prix.</p>
 
           <Link href="/tarifs">
-            <a className="text-xl text-cyan-800 no-underline inline-block mb-12 border-cyan-800 hover:border-cyan-900 hover:text-cyan-900 hover:shadow-md border-2 p-3 rounded-lg">
+            <a className="text-xl text-gray-800 no-underline inline-block mb-12 border-gray-800 hover:border-gray-900 hover:text-gray-900 hover:shadow-md border-2 p-3 rounded-lg">
               Consultez les tarifs{' '}
               <FaArrowCircleRight className="inline ml-2" />
             </a>
           </Link>
         </Section>
-        <div className="absolute -bottom-16 -left-5 -right-5 h-24 bg-white transform  rotate-2" />
       </div>
+
       <Section>
-        <FaShippingFast
+        <FaRunning
           className="text-orange-500 text-3xl mb-4"
           title="chronomètre"
         />
@@ -200,7 +186,7 @@ export default function Index({ data, preview }) {
         </h2>
         <h3 className="text-6xl font-extrabold">Prise de rendez-vous rapide</h3>
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <p className="text-gray-500 text-2xl">
             Sur votre lieu de travail, pendant vos courses. Selon vos besoins,
             nous pouvons planifier au mieux votre rendez-vous.
@@ -212,6 +198,36 @@ export default function Index({ data, preview }) {
             Prendre rendez-vous <FaArrowCircleRight className="inline ml-2" />
           </a>
         </Link>
+      </Section>
+      <Section>
+        <h3 className="text-6xl font-extrabold">Les garanties {name}</h3>
+        <ul className="text-xl space-y-2">
+          <li>
+            <FaCheckCircle className="inline text-green-600" /> 34 points de
+            contrôle inclus
+          </li>
+          <li>
+            <FaCheckCircle className="inline text-green-600" /> Chantier propre
+          </li>
+          <li>
+            <FaCheckCircle className="inline text-green-600" /> Ne répare que ce
+            qui est nécessaire. On prend soin de notre terre{' '}
+            <span role="img" aria-label="planète bleue">
+              🌍
+            </span>
+          </li>
+          <li>
+            <FaCheckCircle className="inline text-green-600" /> Pièces et
+            sourire garantis
+          </li>
+          <li>
+            <FaCheckCircle className="inline text-green-600" /> C'est moi le
+            patron{' '}
+            <span role="img" aria-label="sourire">
+              😄
+            </span>
+          </li>
+        </ul>
       </Section>
     </>
   );

@@ -20,7 +20,7 @@ export function BackgroundImage({
           alt=""
         />
       ) : null}
-      <div className="absolute -bottom-16 -left-5 -right-5 h-24 bg-white transform  rotate-2" />
+      <div className="absolute -bottom-16 -left-5 -right-5 h-24 bg-white" />
     </div>
   );
 }

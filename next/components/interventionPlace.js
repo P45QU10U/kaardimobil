@@ -89,16 +89,18 @@ function InterventionPlaceScreen({ center, distanceMax }) {
 
   return (
     <div {...getComboboxProps()} className="grid grid-cols-1">
-      <label htmlFor="address">Adresse, ville</label>{' '}
+      <label htmlFor="address" className="mb-2">
+        Adresse, ville
+      </label>{' '}
       <div className="flex">
         <input
-          className="flex-1 inline-block h-12"
+          className="flex-1 inline-block h-12 border-orange-600 border-2 focus:ring-2 ring-orange-700 p-2"
           id="address"
           {...getInputProps()}
           placeholder="rue de la mare…"
         />
         <button
-          className="w-12 grid place-items-center"
+          className="w-12 grid place-items-center border-orange-600 border-2 focus:ring-2 ring-orange-700 hover:bg-orange-400"
           type="button"
           onClick={() => {
             setDebouncedQuery('');
