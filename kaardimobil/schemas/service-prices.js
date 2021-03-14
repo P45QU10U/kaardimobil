@@ -11,7 +11,7 @@ export default {
     {
       title: "Prix",
       name: "price",
-      type: "number",
+      type: "string",
     },
   ]
   }
