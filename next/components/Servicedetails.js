@@ -1,4 +1,5 @@
 import BlockContent from '@sanity/block-content-to-react';
+import PropTypes from 'prop-types';
 import { PortableText } from '../lib/sanity';
 
 const serializers = {
@@ -59,11 +60,11 @@ export default function Categoryservice({ services, category }) {
             </div>
             <ul className="divide-y-2 divide-dotted divide-orange-700">
               <li key={i}>
-                {d.defaultProductVariant.title} {d.defaultProductVariant.price}€
+                {d.defaultProductVariant.title} {d.defaultProductVariant.price}
               </li>
               {d?.variants?.map((v, index) => (
                 <li key={`var${index}`}>
-                  {v.title} {v.price}€
+                  {v.title} {v.price}
                 </li>
               ))}
             </ul>
@@ -73,3 +74,8 @@ export default function Categoryservice({ services, category }) {
     </div>
   );
 }
+
+Categoryservice.propTypes = {
+  services: PropTypes.array,
+  category: PropTypes.string,
+};
