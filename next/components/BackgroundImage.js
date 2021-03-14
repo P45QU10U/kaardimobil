@@ -7,7 +7,12 @@ export function BackgroundImage({
   imgOpacity = 'opacity-20',
 }) {
   return (
-    <div className={`absolute inset-0 overflow-hidden ${bgcolor} ${bgopacity}`}>
+    <div
+      className={`absolute inset-0 overflow-hidden ${bgcolor} ${bgopacity}`}
+      style={{
+        background: 'linear-gradient(0deg, #00000088 30%, #FFFFFF44 100%)',
+      }}
+    >
       {src ? (
         <Img
           layout="fill"

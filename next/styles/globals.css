@@ -6,7 +6,8 @@
   @font-face {
     font-family: Roboto;
     font-display: swap;
-    src: url("/fonts/Roboto-Regular.woff") format("woff");
+    src: url("/fonts/Roboto-Regular.woff2") format("woff2")
+      url("/fonts/Roboto-Regular.woff") format("woff");
   }
   @font-face {
     font-family: Kanit;
@@ -95,11 +96,12 @@
 
   .foldedcorner {
     position: relative;
-    background: #ef7d00; /* Fallback */
-    background: linear-gradient(-150deg, transparent 1.5em, #ef7d00 0);
+    background: white; /* Fallback */
+    background: linear-gradient(-150deg, transparent 1.5em, white 0);
     padding: 2em;
     font: 100%/1.6 Baskerville, Palatino, serif;
     border-radius: 0.5em;
+    box-shadow: -0.2em 0.2em 0.3em -0.1em rgba(0, 0, 0, 0.15);
   }
 
   .foldedcorner::before {
