@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SiFacebook } from 'react-icons/si';
+import Img from 'next/image';
 import { useAppContext } from '../pages/_app';
 import { Container, Section } from './designSystem/layout';
 import { menu } from './menu/Menu';
@@ -7,7 +8,8 @@ import Openinghours from './Openinghours';
 
 export default function Footer() {
   const params = useAppContext();
-  const { name, address, openinghours, phonenumber } = params;
+  console.log(params);
+  const { name, address, openinghours, phonenumber, socialnetworks } = params;
 
   return (
     <Container className="bg-gray-50 bg-opacity-80">
@@ -47,16 +49,22 @@ export default function Footer() {
           <h4 className="text-orange-800">Suivez-moi</h4>
 
           <ul>
-            <li>
-              <a href="https://www.facebook.com/homecano" className="flex">
-                <SiFacebook
-                  size="24"
-                  title="Facebook"
-                  className="text-orange-700"
-                />
-                <span className="ml-2">Ho'Mecano</span>
-              </a>
-            </li>
+            {socialnetworks.length
+              ? socialnetworks.map((soc) => (
+                  <li>
+                    <a href={soc.socialnetworkurl} className="flex">
+                      <Img
+                        layout="intrinsic"
+                        width="24"
+                        height="24"
+                        title={soc.name}
+                        src={soc.socialnetworkicon.asset.url}
+                      />
+                      <span className="ml-2">{soc.nickname}</span>
+                    </a>
+                  </li>
+                ))
+              : null}
           </ul>
         </div>
       </Section>

@@ -5,12 +5,18 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Nom réseau social',
+      title: 'Réseau social',
+      description: 'Facebook, Twitter, YouTube, TikTok...',
+      type: 'string',
+    },
+    {
+      name: 'nickname',
+      title: 'Pseudo réseau social',
       type: 'string',
     },
     {
       name: 'socialnetworkurl',
-      title: 'url réseau social',
+      title: 'adresse réseau social',
       type: 'url',
       description: 'Adresse réseau social',
     },

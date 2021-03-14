@@ -33,7 +33,16 @@ const postQuery = groq`*[_type == 'storeSettings'][0]{
   interventiondistance,
   geocoords,
   "promotions": *[_type == "offers"],
-  "socialnetworks": *[_type == "socialnetwork"]
+  "socialnetworks": *[_type == "socialnetwork"] {
+    name,
+    nickname,
+    socialnetworkurl,
+    socialnetworkicon {
+      asset->{
+        url
+      }
+    }
+  }
 }`;
 
 MyApp.getInitialProps = async (ctx) => {
