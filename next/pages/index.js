@@ -121,7 +121,7 @@ export default function Index({ data, preview }) {
 
       <div className="relative mt-8 overflow-hidden">
         <div className="absolute -left-10 -right-10 topography h-full" />
-        <Section className="mt-24 mb-24 relative bg-opacity-80 p-4 bg-white rounded-md">
+        <Section className="mt-24 mb-24 relative bg-opacity-80 p-10 bg-white border shadow-lg rounded-2xl">
           <FaLocationArrow
             className="text-gray-400 text-3xl mb-4"
             title="direction"

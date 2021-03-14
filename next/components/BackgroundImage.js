@@ -2,17 +2,12 @@ import Img from 'next/image';
 
 export function BackgroundImage({
   src,
-  bgcolor = 'bg-white',
+  bgcolor = 'bg-orange-800',
   bgopacity = 'bg-opacity-40',
   imgOpacity = 'opacity-20',
 }) {
   return (
-    <div
-      className={`absolute inset-0 overflow-hidden ${bgcolor} ${bgopacity}`}
-      style={{
-        background: 'linear-gradient(0deg, #00000088 30%, #FFFFFF44 100%)',
-      }}
-    >
+    <div className={`absolute inset-0 overflow-hidden ${bgcolor} ${bgopacity}`}>
       {src ? (
         <Img
           layout="fill"

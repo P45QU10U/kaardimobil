@@ -58,14 +58,13 @@ function AdvertDistance() {
   const to = point([latUser, lngUsr]);
   const options = { units: 'kilometers' };
   const distanceUserToCenter = to ? distance(from, to, options) : '';
+  const affichDist = Math.round(distanceUserToCenter);
 
   const [whatprice] = possibleDistances.filter(
     (a) => a[0] > distanceUserToCenter
   );
 
   if (whatprice) {
-    const affichDist = Math.round(distanceUserToCenter);
-
     return intervention.adress !== null ? (
       <div role="alert" ref={alertRef}>
         {distanceUserToCenter > whatprice[0] ? (
@@ -87,7 +86,7 @@ function AdvertDistance() {
                 </button>{' '}
                 Nous ne sommes qu'à {affichDist}km l'un de l'autre.
               </p>
-              <p>Frais de déplacement applicables {whatprice[1]}€</p>
+              <p>Frais de déplacement applicables&nbsp;: {whatprice[1]}€</p>
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <ContactLink>Prendre rendez-vous</ContactLink>
               </div>
@@ -113,11 +112,12 @@ function AdvertDistance() {
     ) : null;
   }
   return (
-    <div>
+    <div className="text-xl">
       <span role="img" aria-label="Personne déçue">
         🙍
       </span>{' '}
-      Quel dommage, nous sommes trop loin l'un de l'autre
+      Nous sommes à {affichDist} l'un de l'autre ; veuillez nous contacter pour
+      savoir si un déplacement est possible.
     </div>
   );
 }
