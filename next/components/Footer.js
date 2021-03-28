@@ -8,8 +8,14 @@ import Openinghours from './Openinghours';
 
 export default function Footer() {
   const params = useAppContext();
-  console.log(params);
-  const { name, address, openinghours, phonenumber, socialnetworks } = params;
+  const {
+    name,
+    address,
+    siret,
+    openinghours,
+    phonenumber,
+    socialnetworks,
+  } = params;
 
   return (
     <Container className="bg-gray-50 bg-opacity-80">
@@ -50,8 +56,8 @@ export default function Footer() {
 
           <ul>
             {socialnetworks.length
-              ? socialnetworks.map((soc) => (
-                  <li>
+              ? socialnetworks.map((soc, count) => (
+                  <li key={`social-${count}`}>
                     <a href={soc.socialnetworkurl} className="flex">
                       <Img
                         layout="intrinsic"

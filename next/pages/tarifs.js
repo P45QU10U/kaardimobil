@@ -23,16 +23,10 @@ const postQuery = groq`*[_type == 'services']{
 } | order(category asc)`;
 
 export default function Prestations({ data, preview }) {
-  // const { data: services } = usePreviewSubscription(postQuery, {
-  //   initialData: data,
-  //   enabled: preview,
-  // });
   const { data: services } = usePreviewSubscription(postQuery, {
     initialData: data,
     enabled: preview,
   });
-
-  console.log(data);
 
   const categories = new Set(services.map((e) => e.category));
 

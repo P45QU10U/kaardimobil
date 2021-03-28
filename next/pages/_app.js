@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps, params }) {
 const postQuery = groq`*[_type == 'storeSettings'][0]{
   name,
   address,
+  siret,
   postalcode,
   city,
   openinghours,
@@ -42,7 +43,8 @@ const postQuery = groq`*[_type == 'storeSettings'][0]{
         url
       }
     }
-  }
+  },
+  "pricesexamples": *[_type == "services"]
 }`;
 
 MyApp.getInitialProps = async (ctx) => {

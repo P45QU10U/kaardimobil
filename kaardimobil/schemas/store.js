@@ -25,8 +25,13 @@ export default {
         {name: 'postalcode', title: 'Code postal', type: 'string'},
         {name: 'city', type: 'string', title: 'ville'}
       ],
-    
+      
       title: 'Adresse de l\'entreprise',
+    },
+    {
+      name: 'siret',
+      title: 'Siret de l\'adresse de cet établissement',
+      type: 'string',
     },
     {
       name: 'openinghours',
@@ -64,9 +69,15 @@ export default {
     },
     {
       name: 'offers',
-      title: 'Messages',
+      title: 'Messages/Promotions',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'offers' }] }],
     },
+    {
+      name: 'pricesexamples',
+      title: 'Exemples de prix sur accueil',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'services' }] }],
+    }
   ],
 };

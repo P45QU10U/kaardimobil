@@ -34,6 +34,7 @@ const postQuery = groq`*[_type == 'storeSettings'][0]{
   openinghours,
   phonenumber,
   interventiondistance,
+  pricesexamples,
   geocoords,
   "socialnetworks": *[_type == "socialnetwork"]
 }`;
@@ -57,7 +58,16 @@ export default function Index({ data, preview }) {
   //   enabled: preview,
   // });
 
-  const { name, address, geocoords, interventiondistance } = useAppContext();
+  const {
+    name,
+    address,
+    geocoords,
+    pricesexamples,
+    interventiondistance,
+  } = useAppContext();
+
+  const tout = useAppContext();
+  console.log(tout);
 
   const possibleDistances = interventiondistance
     .map((e) => [e.distance, e.price])
@@ -121,7 +131,7 @@ export default function Index({ data, preview }) {
 
       <div className="relative mt-8 overflow-hidden">
         <div className="absolute -left-10 -right-10 topography h-full" />
-        <Section className="mt-24 mb-24 relative bg-opacity-80 p-10 bg-white border shadow-lg rounded-2xl">
+        <Section className="mt-24 mb-24 relative bg-opacity-80 p-4 md:p-10 bg-white border md:shadow-lg md:rounded-2xl">
           <FaLocationArrow
             className="text-gray-400 text-3xl mb-4"
             title="direction"
@@ -165,7 +175,7 @@ export default function Index({ data, preview }) {
             Chez Ho'Mecano, on ne vous changera que le fusible.
           </p>
 
-          <p>Mettre un tab avec deux exemples de prix.</p>
+          <p>{JSON.stringify(pricesexamples, null, 2)}</p>
 
           <Link href="/tarifs">
             <a className="text-xl text-gray-800 no-underline inline-block mb-12 border-gray-800 hover:border-gray-900 hover:text-gray-900 hover:shadow-md border-2 p-3 rounded-lg">
