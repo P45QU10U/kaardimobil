@@ -3,19 +3,23 @@ import distance from '@turf/distance';
 
 import { useEffect, useRef, useState } from 'react';
 import Confetti from 'react-confetti';
-import Link from 'next/link';
-import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { useInterventionContext } from '../context/InterventionContext';
 import { useAppContext } from '../pages/_app';
-import { ContactLink } from './Links';
+import { ContactLink } from './designSystem/Links';
 
-function AdvertDistance() {
-  const [coords, setCoords] = useState(undefined);
-  const [animation, setAnimation] = useState(true);
+function AdvertDistance({ position }) {
+  // Ici, on veut afficher la possibilité ou pas de desservir.
+  // Au premier affichage (count = 1), lancer l'animation. Sinon, seulement si click du bouton
+  // Si changement adresse
+
+  // Voir si on peut pas passer les coords de la div dans AdvertDistance
+
+  const [coords, setScreenCoords] = useState(undefined);
+  const [statusAnimation, setStatusAnimation] = useState(true);
   const alertRef = useRef();
 
   useEffect(() => {
-    setCoords({
+    setScreenCoords({
       x: alertRef.current
         ? alertRef.current.offsetLeft + alertRef.current.offsetWidth / 2
         : 0,
@@ -23,19 +27,20 @@ function AdvertDistance() {
       w: 20,
       h: 10,
     });
-  });
+  }, [alertRef, setScreenCoords]);
 
   function onClick(ev) {
-    setCoords({
+    setScreenCoords({
       x: ev.clientX,
       y: ev.clientY,
       w: 20,
       h: 10,
     });
-    setAnimation(true);
+    setStatusAnimation(true);
   }
+
   function onComplete() {
-    setAnimation(false);
+    setStatusAnimation(false);
   }
 
   const { interventiondistance, geocoords } = useAppContext();
@@ -64,60 +69,40 @@ function AdvertDistance() {
     (a) => a[0] > distanceUserToCenter
   );
 
-  if (whatprice) {
-    return intervention.adress !== null ? (
-      <div role="alert" ref={alertRef}>
-        {distanceUserToCenter > whatprice[0] ? (
-          <span>
-            <span role="img" aria-label="Personne déçue">
-              🙍
+  return whatprice ? (
+    <>
+      <div>
+        <p className="text-xl">
+          <button type="button" onClick={onClick}>
+            <span role="img" aria-label="étincelles">
+              ✨
             </span>
-            Quel dommage, nous sommes un peu trop éloignés. ({affichDist}kms)
-          </span>
-        ) : (
-          <>
-            <div>
-              <p className="text-xl">
-                <button type="button" onClick={onClick}>
-                  <span role="img" aria-label="étincelles">
-                    ✨
-                  </span>
-                  Merveilleux.
-                </button>{' '}
-                Nous ne sommes qu'à {affichDist}km l'un de l'autre.
-              </p>
-              <p>Frais de déplacement applicables&nbsp;: {whatprice[1]}€</p>
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                <ContactLink>Prendre rendez-vous</ContactLink>
-              </div>
-              {animation ? (
-                <Confetti
-                  colors={[
-                    '#ef7d00',
-                    '#ee7f00',
-                    '#a3a3a3',
-                    '#dadada',
-                    '#5f5f5f',
-                  ]}
-                  numberOfPieces={128}
-                  confettiSource={coords}
-                  recycle={false}
-                  onConfettiComplete={onComplete}
-                />
-              ) : null}
-            </div>
-          </>
-        )}
+            Merveilleux.
+          </button>{' '}
+          Nous ne sommes qu'à {affichDist}km l'un de l'autre.
+        </p>
+        <p>Frais de déplacement applicables&nbsp;: {whatprice[1]}€</p>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <ContactLink>Prendre rendez-vous</ContactLink>
+        </div>
+        {statusAnimation ? (
+          <Confetti
+            colors={['#ef7d00', '#ee7f00', '#a3a3a3', '#dadada', '#5f5f5f']}
+            numberOfPieces={128}
+            confettiSource={coords}
+            recycle={false}
+            onConfettiComplete={onComplete}
+          />
+        ) : null}
       </div>
-    ) : null;
-  }
-  return (
+    </>
+  ) : (
     <div className="text-xl">
       <span role="img" aria-label="Personne déçue">
         🙍
       </span>{' '}
-      Nous sommes à {affichDist} l'un de l'autre ; veuillez nous contacter pour
-      savoir si un déplacement est possible.
+      Nous sommes à {affichDist}km l'un de l'autre ; veuillez nous contacter
+      pour savoir si un déplacement est possible.
     </div>
   );
 }

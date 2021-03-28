@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 // import Tooltip from '@reach/tooltip'
 import { FaSearch, FaTimes } from 'react-icons/fa';
 import { useCombobox } from 'downshift';
@@ -87,6 +87,9 @@ function InterventionPlaceScreen({ center, distanceMax }) {
     // onStateChange: (e) => console.log('stateChange', e)
   });
 
+  // Voir si je peux passer la ref du combobox
+  const { ref } = getComboboxProps();
+
   return (
     <div {...getComboboxProps()} className="grid grid-cols-1">
       <label htmlFor="address" className="mb-2">
@@ -135,7 +138,8 @@ function InterventionPlaceScreen({ center, distanceMax }) {
           ))
         )}
       </ul>
-      {intervention.address !== null ? <AdvertDistance /> : ''}
+      {/* Si on a une adresse, on affiche la notif si possible ou pas. */}
+      {intervention.address !== null ? <AdvertDistance position={ref} /> : ''}
     </div>
   );
 }
