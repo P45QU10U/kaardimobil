@@ -175,7 +175,15 @@ export default function Index({ data, preview }) {
             Chez Ho'Mecano, on ne vous changera que le fusible.
           </p>
 
-          <p>{JSON.stringify(pricesexamples, null, 2)}</p>
+          <h4>Exemples de prix</h4>
+          <ul>
+            {pricesexamples.map((examp) => (
+              <li>
+                {examp.name}: {examp.defaultProductVariant.title}{' '}
+                {examp.defaultProductVariant.price}
+              </li>
+            ))}
+          </ul>
 
           <Link href="/tarifs">
             <a className="text-xl text-gray-800 no-underline inline-block mb-12 border-gray-800 hover:border-gray-900 hover:text-gray-900 hover:shadow-md border-2 p-3 rounded-lg">

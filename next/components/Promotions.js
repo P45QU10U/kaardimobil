@@ -2,14 +2,14 @@ import { useAppContext } from '../pages/_app';
 import { Section } from './designSystem/layout';
 
 export default function Promotions() {
-  const { promotions } = useAppContext();
+  const { offers } = useAppContext();
   const {
     description,
     name,
     promocode,
     startduration,
     endduration,
-  } = promotions[0];
+  } = offers[0];
 
   return (
     <Section className="relative md:w-1/3 folded-corner">

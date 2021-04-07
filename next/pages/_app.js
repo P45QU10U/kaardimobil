@@ -33,7 +33,7 @@ const postQuery = groq`*[_type == 'storeSettings'][0]{
   phonenumber,
   interventiondistance,
   geocoords,
-  "promotions": *[_type == "offers"],
+  offers[]->,
   "socialnetworks": *[_type == "socialnetwork"] {
     name,
     nickname,
@@ -44,7 +44,7 @@ const postQuery = groq`*[_type == 'storeSettings'][0]{
       }
     }
   },
-  "pricesexamples": *[_type == "services"]
+  pricesexamples[]->{ name, defaultProductVariant }	
 }`;
 
 MyApp.getInitialProps = async (ctx) => {
