@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { FaArrowAltCircleRight } from 'react-icons/fa';
+import { FaArrowAltCircleRight, FaEdge } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 export function ContactLink({ children }) {
   return (
@@ -10,3 +11,29 @@ export function ContactLink({ children }) {
     </Link>
   );
 }
+
+export function JoshButtonLink({
+  href,
+  bgEdge = 'bg-orange-800',
+  bgFront = 'bg-orange-600',
+  textColor = 'text-white',
+  children,
+}) {
+  return (
+    <Link href={href}>
+      <a className="text-xl fitcontent pushable inline-block no-underline">
+        <span className="shadow_button" />
+        <span className={`edge ${bgEdge}`} />
+        <span className={`front ${bgFront} ${textColor}`}>{children}</span>
+      </a>
+    </Link>
+  );
+}
+
+JoshButtonLink.propTypes = {
+  href: PropTypes.string,
+  bgEdge: PropTypes.string,
+  bgFront: PropTypes.string,
+  textColor: PropTypes.string,
+  children: PropTypes.any,
+};

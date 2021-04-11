@@ -27,6 +27,7 @@ import {
   urlFor,
   PortableText,
 } from '../lib/sanity';
+import { JoshButtonLink } from '../components/designSystem/Links';
 
 const postQuery = groq`*[_type == 'storeSettings'][0]{
   name,
@@ -119,12 +120,9 @@ export default function Index({ data, preview }) {
               travailler ici, le bruit des vagues aidera le temps de la
               réparation.
             </p>
-            <Link href="/contact">
-              <a className="text-xl text-orange-500 no-underline flex items-center justify-items-center border-orange-500 hover:border-orange-700 hover:text-orange-700 hover:shadow-sm border-2 p-3 rounded-lg">
-                Prendre rendez-vous{' '}
-                <FaArrowCircleRight className="inline ml-2" />
-              </a>
-            </Link>
+            <JoshButtonLink href="/contact">
+              Prendre rendez-vous <FaArrowCircleRight className="inline ml-2" />
+            </JoshButtonLink>
           </div>
         </div>
       </Section>
@@ -175,8 +173,9 @@ export default function Index({ data, preview }) {
             Chez Ho'Mecano, on ne vous changera que le fusible.
           </p>
 
-          <h4>Exemples de prix</h4>
-          <ul>
+          <h4 className="text-gray-800">Exemples de prix</h4>
+
+          <ul className="mb-4 p-4">
             {pricesexamples.map((examp) => (
               <li>
                 {examp.name}: {examp.defaultProductVariant.title}{' '}
@@ -185,12 +184,14 @@ export default function Index({ data, preview }) {
             ))}
           </ul>
 
-          <Link href="/tarifs">
-            <a className="text-xl text-gray-800 no-underline inline-block mb-12 border-gray-800 hover:border-gray-900 hover:text-gray-900 hover:shadow-md border-2 p-3 rounded-lg">
-              Consultez les tarifs{' '}
-              <FaArrowCircleRight className="inline ml-2" />
-            </a>
-          </Link>
+          <JoshButtonLink
+            bgEdge="bg-gray-300"
+            bgFront="bg-gray-100"
+            textColor="text-gray-900"
+            href="/tarifs"
+          >
+            Consulter les tarifs <FaArrowCircleRight className="inline ml-2" />
+          </JoshButtonLink>
         </Section>
       </div>
 
@@ -211,11 +212,9 @@ export default function Index({ data, preview }) {
           </p>
         </div>
 
-        <Link href="/contact">
-          <a className="text-xl text-orange-500 no-underline inline-block mb-12 border-orange-500 hover:border-orange-700 hover:text-orange-700 hover:shadow-sm border-2 p-3 rounded-lg">
-            Prendre rendez-vous <FaArrowCircleRight className="inline ml-2" />
-          </a>
-        </Link>
+        <JoshButtonLink href="/contact">
+          Prendre rendez-vous <FaArrowCircleRight className="inline ml-2" />
+        </JoshButtonLink>
       </Section>
       <Section>
         <h3 className="text-6xl font-extrabold">Les garanties {name}</h3>
