@@ -12,8 +12,8 @@ export default function Promotions() {
   } = offers[0];
 
   return (
-    <Section className="relative md:w-1/3 folded-corner">
-      <div className="foldedcorner p-2 ">
+    <Section className="w-4/5 md:w-1/3 bg-orange-400 shadow-2xl rounded-lg mb-4">
+      <div className="p-2   ">
         {/* <div className="absolute rounded-full h-full w-3 bg-blue-500" /> */}
         <h2 className="text-2xl mb-2 text-gray-900 font-mono">{name}</h2>
         <p className="text-lg text-gray-700">{description}</p>

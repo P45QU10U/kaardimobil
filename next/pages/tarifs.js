@@ -6,6 +6,8 @@ import { IoMdPricetag } from 'react-icons/io';
 import Servicedetails from '../components/Servicedetails';
 import { Section } from '../components/designSystem/layout';
 import { getClient, usePreviewSubscription } from '../lib/sanity';
+import Promotions from '../components/Promotions';
+import { JoshButtonLink } from '../components/designSystem/Links';
 
 /* 
 *[_type == 'services']{
@@ -47,16 +49,13 @@ export default function Prestations({ data, preview }) {
         />
       ))}
 
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 mb-12">
         <div>
-          <p />
-          <Link href="/contact">
-            <a className="text-xl text-orange-500 no-underline inline-block mb-12 border-orange-500 hover:border-orange-700 hover:text-orange-700 hover:shadow-sm border-2 p-3 rounded-lg">
-              Faire un devis <FaArrowCircleRight className="inline ml-2" />
-            </a>
-          </Link>
+          <JoshButtonLink href="/contact">
+            Faire un devis <FaArrowCircleRight className="inline ml-2" />
+          </JoshButtonLink>
         </div>
-        <div className="grid grid-cols-2 items-center">
+        {/* <div className="grid grid-cols-2 items-center">
           <p className="text-xl p-4 font-serif bg-yellow-300 rounded-lg">
             C'est moins cher qu'en concession, et tout aussi bien fait.
           </p>
@@ -67,8 +66,9 @@ export default function Prestations({ data, preview }) {
             alt="goutte d'huile"
             src="/images/oil_droplet.svg"
           />
-        </div>
+        </div> */}
       </div>
+      <Promotions />
     </Section>
   );
 }

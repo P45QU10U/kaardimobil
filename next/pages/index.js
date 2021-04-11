@@ -28,6 +28,7 @@ import {
   PortableText,
 } from '../lib/sanity';
 import { JoshButtonLink } from '../components/designSystem/Links';
+import Promotions from '../components/Promotions';
 
 const postQuery = groq`*[_type == 'storeSettings'][0]{
   name,
@@ -91,7 +92,7 @@ export default function Index({ data, preview }) {
           content="Ho'Mecano, garage mobile tous véhicules, où vous le souhaitez"
         />
       </Head>
-
+      <Promotions />
       <Section className="mb-8">
         <FaStopwatch
           className="text-orange-500 text-3xl mb-4"
