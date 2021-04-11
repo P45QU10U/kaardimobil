@@ -7,7 +7,7 @@ export default function MenuLi({ currentpage, children }) {
         currentpage
           ? 'border-gray-800 font-extrabold md:border-solid md:border-b-4'
           : null
-      } m-2 md:mr-2 text-gray-800 uppercase md:font-bold`}
+      } m-2 md:mr-2 text-gray-800 uppercase md:font-bold hover:border-b-4 hover:border-gray-500 `}
     >
       {children}
     </li>

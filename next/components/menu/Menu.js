@@ -80,11 +80,7 @@ export default function Menu() {
           {menu.map((entr, index) => (
             <MenuLi key={`menu-${index}`} currentpage={asPath === entr.slug}>
               <Link href={entr.slug}>
-                <a
-                  href={entr.slug}
-                  className="hover:ring hover:ring-orange-500"
-                  onClick={(e) => toggleMenu(e)}
-                >
+                <a href={entr.slug} onClick={(e) => toggleMenu(e)}>
                   {entr.title}
                 </a>
               </Link>
