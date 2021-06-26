@@ -11,25 +11,27 @@ export default function Coords(params) {
             <Img
               src="/images/seb.jpg"
               alt=""
-              layout="fill"
+              width="300"
+              height="300"
+              layout="responsive"
               objectFit="cover"
               className="rounded-full md:rounded-none md:rounded-l-xl"
-              // width="500"
-              // height="700"
             />
           </div>
 
           <div className="p-6 md:col-span-2 flex flex-col justify-around md:p-8 md:h-64 text-center md:text-left space-y-4 rounded-b-xl">
             <blockquote>
-              <p className="text-lg font-semibold">
-                “Plus de 10 années d'expérience chez Renault m'amènent à vous
-                proposer 95% de l'entretien d'un véhicule… où vous le
-                souhaitez.”
+              <p className="text-2xl font-semibold">
+                “Plus de 10 ans d'expérience dans la réparation automobile
+                m'amène a vous proposer plus de 90% des prestations réalisables
+                dans un garage classique.”
               </p>
             </blockquote>
             <figcaption className="font-medium">
-              <div className="text-cyan-600">Sébastien Le Quellec</div>
-              <div className="text-gray-500">Technicien automobile</div>
+              <div className="text-lg text-orange-800">
+                Sébastien Le Quellec
+              </div>
+              <div className="text-lg text-gray-500">Technicien automobile</div>
             </figcaption>
           </div>
         </figure>

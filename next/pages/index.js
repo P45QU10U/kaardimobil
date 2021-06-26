@@ -69,7 +69,6 @@ export default function Index({ data, preview }) {
   } = useAppContext();
 
   const tout = useAppContext();
-  console.log(tout);
 
   const possibleDistances = interventiondistance
     .map((e) => [e.distance, e.price])
@@ -107,19 +106,20 @@ export default function Index({ data, preview }) {
           <div className="relative place-self-center">
             <Img
               layout="intrinsic"
-              width="300"
-              height="300"
+              width="400"
+              height="400"
               className="rounded-lg"
               objectFit="cover"
-              alt="Combi Volkswagen au bord de la mer"
-              src="/images/geoffroy-hauwen-Upg453Fo7wU-unsplash.jpg"
+              alt="Thé ou café à la maison"
+              src="/images/daiga-ellaby-3LbpZo8MG8A-unsplash.jpg"
             />
           </div>
           <div className="flex flex-col justify-around ">
-            <p className="text-gray-500 text-2xl">
-              C'est le garage qui vient à vous. Après, si vous m'amenez à
-              travailler ici, le bruit des vagues aidera le temps de la
-              réparation.
+            <p className="text-gray-500 text-4xl">
+              C'est le garage qui vient à vous.
+            </p>
+            <p className="text-gray-500 text-3xl">
+              Quelle meilleure salle d'attente que votre chez vous&nbsp;?
             </p>
             <JoshButtonLink href="/contact">
               Prendre rendez-vous <FaArrowCircleRight className="inline ml-2" />
@@ -140,12 +140,12 @@ export default function Index({ data, preview }) {
             C'est le mécanicien qui vient à vous
           </h3>
           <p className="text-gray-500 text-2xl">
-            {name} opère dans un rayon de {distancemax}km autour de{' '}
-            {address.city}.
+            J'opère dans un rayon de {distancemax}km autour de {address.city}{' '}
+            <span className="text-sm">(voire plus selon les cas)</span>
           </p>
 
           <p className="text-gray-500 text-3xl mt-6">
-            Testez votre éligibilité.
+            Testez si je peux venir jusqu'à vous.
           </p>
           <InterventionPlace
             center={geocoords}
@@ -161,17 +161,13 @@ export default function Index({ data, preview }) {
             title="caisse enregistreuse"
           />
           <h2 className="uppercase text-2xl text-gray-800">
-            Tarifs attractifs
+            Mini Prix, Maxi Qualité !
           </h2>
           <h3 className="text-6xl font-extrabold text-transparent bg-gradient-to-t bg-clip-text from-gray-800 to-gray-600">
-            Des prix tout doux
+            Des prix légers pour des réparations de qualité
           </h3>
           <p className="text-gray-700 text-2xl">
-            Votre facture sera plus légère. Si un fusible est grillé, le devis
-            n'affichera pas un système électrique à remplacer.
-          </p>
-          <p className="text-gray-700 text-2xl">
-            Chez Ho'Mecano, on ne vous changera que le fusible.
+            Votre banquier va m'aimer, et votre voiture aussi.
           </p>
 
           <h4 className="text-gray-800">Exemples de prix</h4>
@@ -232,18 +228,16 @@ export default function Index({ data, preview }) {
             qui est nécessaire. On prend soin de notre terre{' '}
             <span role="img" aria-label="planète bleue">
               🌍
-            </span>
+            </span>{' '}
+            et de votre porte-monnaie
           </li>
           <li>
-            <FaCheckCircle className="inline text-green-600" /> Pièces et
-            sourire garantis
-          </li>
-          <li>
-            <FaCheckCircle className="inline text-green-600" /> C'est moi le
-            patron{' '}
-            <span role="img" aria-label="sourire">
+            <FaCheckCircle className="inline text-green-600" /> Pièces, main
+            d'oeuvre et sourire garantis{' '}
+            <span role="img" aria-label="visage rieur">
               😄
-            </span>
+            </span>{' '}
+            !
           </li>
         </ul>
       </Section>
