@@ -8,12 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@formspree/react": "^2.2.3",
     "@reach/skip-nav": "^0.12.1",
     "@reach/tooltip": "^0.12.1",
     "@sanity/block-content-to-react": "^2.0.7",
     "@turf/distance": "^6.3.0",
     "@turf/helpers": "^6.3.0",
-    "debounce-fn": "^4.0.0",
     "downshift": "^6.1.1",
     "next": "10.0.3",
     "next-sanity": "^0.1.11",

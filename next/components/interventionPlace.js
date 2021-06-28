@@ -1,8 +1,7 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 // import Tooltip from '@reach/tooltip'
 import { FaSearch, FaInfo, FaTimes } from 'react-icons/fa';
 import { useCombobox } from 'downshift';
-import debounceFn from 'debounce-fn';
 import Confetti from 'react-confetti';
 import { point } from '@turf/helpers';
 import distance from '@turf/distance';
@@ -77,10 +76,7 @@ function giveMeAPrice(interPlace, distancesRenseignees, geocoords) {
     distance: affichDist,
   };
 
-  if (whatprice) {
-    return detailsToDisplay;
-  }
-  return false;
+  return detailsToDisplay;
 }
 
 function InterventionPlaceScreen({ center, distanceMax }) {
@@ -121,7 +117,7 @@ function InterventionPlaceScreen({ center, distanceMax }) {
   }, [debouncedSearchTerm, run, client, center]);
 
   useEffect(() => {
-    if (isItPossible) {
+    if (isItPossible && isItPossible.price) {
       setStatusAnimation(true);
       setScreenCoords({
         x: alertRef.current
@@ -183,7 +179,7 @@ function InterventionPlaceScreen({ center, distanceMax }) {
           onConfettiComplete={onComplete}
         />
       ) : null}
-      <label htmlFor="address" className="mb-2">
+      <label htmlFor="address" className="mb-4">
         <span className="font-mono text-sm">
           Renseignez votre adresse postale
         </span>
@@ -209,26 +205,6 @@ function InterventionPlaceScreen({ center, distanceMax }) {
         </div>
       </label>
       <div />
-      <div className="flex items-stretch min-h-full">
-        <button
-          className="w-8 h-8 flex m-2 p-2 cursor-help bg-orange-600 text-lg text-black rounded-full"
-          type="button"
-          aria-label="Information sur adresse renseignée"
-          onClick={() => setInfoAddress(!infoAddress)}
-        >
-          <FaInfo />{' '}
-        </button>
-        {infoAddress ? (
-          <p className="font-serif text-sm ml-2">
-            Cette adresse n'est pas enregistrée. Renseigner celle-ci vous permet
-            de savoir si je peux vous fournir des prestations (dans le rayon
-            convenu), et de calculer d'éventuels frais de déplacement.
-          </p>
-        ) : (
-          ''
-        )}
-      </div>
-
       <ul
         {...getMenuProps()}
         className="leading-10 divide-y-2 divide-dotted divide-orange-700"
@@ -261,6 +237,20 @@ function InterventionPlaceScreen({ center, distanceMax }) {
       ) : (
         ''
       )}
+      <div className="flex items-start min-h-full">
+        <span
+          className="w-8 h-8 flex m-2 p-2 cursor-help bg-orange-600 text-lg text-black rounded-full"
+          type="button"
+          aria-label="Information sur adresse renseignée"
+        >
+          <FaInfo />{' '}
+        </span>
+        <p className="font-serif text-sm ml-2">
+          Cette adresse n'est pas enregistrée. Renseigner celle-ci vous permet
+          de savoir si je peux vous fournir des prestations (dans le rayon
+          convenu), et de calculer d'éventuels frais de déplacement.
+        </p>
+      </div>
     </div>
   );
 }

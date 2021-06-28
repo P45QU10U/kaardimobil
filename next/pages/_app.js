@@ -26,9 +26,10 @@ function MyApp({ Component, pageProps, params }) {
 const postQuery = groq`*[_type == 'storeSettings'][0]{
   name,
   address,
-  siret,
   postalcode,
   city,
+  siret,
+  publisher,
   openinghours,
   phonenumber,
   interventiondistance,

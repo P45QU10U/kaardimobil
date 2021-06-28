@@ -11,8 +11,6 @@ export default function Apropos() {
     interventiondistance,
   } = useAppContext();
 
-  const tout = useAppContext();
-
   const possibleDistances = interventiondistance
     .map((e) => [e.distance, e.price])
     .sort((a, b) => {

@@ -114,7 +114,7 @@ export default function Index({ data, preview }) {
               src="/images/daiga-ellaby-3LbpZo8MG8A-unsplash.jpg"
             />
           </div>
-          <div className="flex flex-col justify-around ">
+          <div className="flex flex-col justify-evenly ">
             <p className="text-gray-500 text-4xl">
               C'est le garage qui vient à vous.
             </p>
@@ -137,16 +137,13 @@ export default function Index({ data, preview }) {
           />
           <h2 className="uppercase text-2xl text-gray-400">Atelier mobile</h2>
           <h3 className="text-6xl font-extrabold text-transparent bg-gradient-to-t bg-clip-text from-orange-700 to-orange-500">
-            C'est le mécanicien qui vient à vous
+            Testez si je peux venir jusqu'à vous
           </h3>
           <p className="text-gray-500 text-2xl">
             J'opère dans un rayon de {distancemax}km autour de {address.city}{' '}
             <span className="text-sm">(voire plus selon les cas)</span>
           </p>
 
-          <p className="text-gray-500 text-3xl mt-6">
-            Testez si je peux venir jusqu'à vous.
-          </p>
           <InterventionPlace
             center={geocoords}
             distanceMax={interventiondistance}
@@ -161,7 +158,7 @@ export default function Index({ data, preview }) {
             title="caisse enregistreuse"
           />
           <h2 className="uppercase text-2xl text-gray-800">
-            Mini Prix, Maxi Qualité !
+            Mini Prix, <span className="text-gray-900">MAXI Quality</span> !
           </h2>
           <h3 className="text-6xl font-extrabold text-transparent bg-gradient-to-t bg-clip-text from-gray-800 to-gray-600">
             Des prix légers pour des réparations de qualité

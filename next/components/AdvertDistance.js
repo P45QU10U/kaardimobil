@@ -18,7 +18,7 @@ function AdvertDistance({
 
   return price ? (
     <>
-      <div>
+      <div className="mb-4">
         <p className="text-xl">
           <button type="button" onClick={onClick}>
             <span role="img" aria-label="étincelles">
@@ -35,7 +35,7 @@ function AdvertDistance({
       </div>
     </>
   ) : (
-    <div className="text-xl">
+    <div className="text-xl mb-4">
       <span role="img" aria-label="Personne déçue">
         🙍
       </span>{' '}

@@ -34,6 +34,12 @@ export default {
       type: 'string',
     },
     {
+      name: 'publisher',
+      title: 'Responsable publication',
+      type: 'string',
+      description: 'Renseigner nom et prénom'
+    },
+    {
       name: 'openinghours',
       title: 'Horaires d\'ouverture',
       type: 'weekdays',

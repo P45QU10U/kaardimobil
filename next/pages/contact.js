@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import { useAppContext } from './_app';
+import { Section } from '../components/designSystem/layout';
 
 import { useInterventionContext } from '../context/InterventionContext';
 import { generateJsonLD } from '../utils/JsonLD';
+import ContactFormWhook from '../components/ContactFormWhook';
 
 export default function Contact() {
   const params = useAppContext();
@@ -16,11 +18,13 @@ export default function Contact() {
         <title>Contactez Ho'Mecano</title>
         <meta
           name="description"
-          content="Ho'Mecano, garage mobile tous véhicules, nos coordonnées"
+          content="Ho'Mecano, garage mobile tous véhicules, tout pour nous contacter"
         />
         {generateJsonLD(params)}
       </Head>
-      Votre lieu d'intervention : {displayAddress}
+      <Section className="mb-8">
+        <ContactFormWhook address={displayAddress} />
+      </Section>
     </div>
   );
 }
