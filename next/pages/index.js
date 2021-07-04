@@ -170,8 +170,8 @@ export default function Index({ data, preview }) {
           <h4 className="text-gray-800">Exemples de prix</h4>
 
           <ul className="mb-4 p-4">
-            {pricesexamples.map((examp) => (
-              <li>
+            {pricesexamples.map((examp, i) => (
+              <li key={`exprice${i}`}>
                 {examp.name}: {examp.defaultProductVariant.title}{' '}
                 {examp.defaultProductVariant.price}
               </li>
