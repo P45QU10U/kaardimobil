@@ -28,7 +28,7 @@ function AdvertDistance({
           </button>{' '}
           Nous ne sommes qu'à {distance}km l'un de l'autre.
         </p>
-        <p>Frais de déplacement applicables&nbsp;: {price[1]}€</p>
+        <p>Frais de déplacement applicables&nbsp;: {price[1]}</p>
         <div className="grid grid-cols-1 md:grid-cols-2">
           <JoshButtonLink href="/contact">Prendre rendez-vous</JoshButtonLink>
         </div>
