@@ -19,7 +19,7 @@ export default function Footer() {
 
   return (
     <Container className="bg-gray-50 bg-opacity-80">
-      <Section className="grid grid-cols-1 grid-rows-2 md:grid-cols-2 lg:grid-cols-2 p-4 gap-4">
+      <Section className="grid grid-cols-1 grid-rows-2 md:grid-cols-2 lg:grid-cols-2 p-4 gap-4 text-lg">
         <div className="mb-4 md:border-r-2 border-gray-300">
           <h4 className="text-orange-800">Coordonnées</h4>
           <p>
@@ -42,12 +42,12 @@ export default function Footer() {
           <h4 className="text-orange-800">Plan du site</h4>
           <ul>
             {menu.map((entr, index) => (
-              <li key={`menu-${index}`}>
-                <Link href={entr.slug}>{entr.title}</Link>
+              <li key={`menu-${index}`} >
+                <Link href={entr.slug}><a className="flex p-2">{entr.title}</a></Link>
               </li>
             ))}
             <li>
-              <Link href="/mentions-legales">Mentions légales</Link>
+              <Link href="/mentions-legales"><a className="flex p-2">Mentions légales</a></Link>
             </li>
           </ul>
         </div>

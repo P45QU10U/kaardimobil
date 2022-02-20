@@ -14,13 +14,15 @@ export default function Contact() {
   return (
     <div>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
         <title>Contactez Ho'Mecano</title>
         <meta
           name="description"
           content="Ho'Mecano, garage mobile tous véhicules, tout pour nous contacter"
         />
-        {generateJsonLD(params)}
+         <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateJsonLD(params)) }}
+      />
       </Head>
       <Section className="mb-8">
         <ContactFormWhook address={displayAddress} />

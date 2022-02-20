@@ -4,6 +4,7 @@ import { SkipNavLink, SkipNavContent } from '@reach/skip-nav';
 import '@reach/skip-nav/styles.css';
 
 import Header from './Header';
+import Favicon from './Favicon'
 import Footer from './Footer';
 import Splash from './Splash';
 import Coords from './Coords';
@@ -17,7 +18,8 @@ export default function Skeleton({ children }) {
       <SkipNavLink>passer au contenu</SkipNavLink>
 
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico.png" />
+        <Favicon />
         <meta name="description" content="Homecano, Garage à domicile" />
       </Head>
 

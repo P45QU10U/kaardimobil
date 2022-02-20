@@ -46,7 +46,7 @@ export default function Menu() {
       <div className="grid grid-cols-2 p-4 items-center md:flex md:gap-2">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-3 text-left text-4xl">
           <Link href="/">
-            <a href="/" className="flex gap-2 items-center no-underline">
+            <a className="flex gap-2 items-center no-underline">
               <Img
                 width="350"
                 height="350"
@@ -80,7 +80,7 @@ export default function Menu() {
           {menu.map((entr, index) => (
             <MenuLi key={`menu-${index}`} currentpage={asPath === entr.slug}>
               <Link href={entr.slug}>
-                <a href={entr.slug} onClick={(e) => toggleMenu(e)}>
+                <a onClick={(e) => toggleMenu(e)}>
                   {entr.title}
                 </a>
               </Link>

@@ -114,7 +114,7 @@ function InterventionPlaceScreen({ center, distanceMax }) {
         )
       );
     }
-  }, [debouncedSearchTerm, run, client, center]);
+  }, [debouncedQuery, debouncedSearchTerm, run, center]);
 
   useEffect(() => {
     if (isItPossible && isItPossible.price) {

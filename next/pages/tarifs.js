@@ -1,6 +1,5 @@
+import Head from 'next/head';
 import { groq } from 'next-sanity';
-import Link from 'next/link';
-import Img from 'next/image';
 import { FaArrowCircleRight } from 'react-icons/fa';
 import { IoMdPricetag } from 'react-icons/io';
 import Servicedetails from '../components/Servicedetails';
@@ -33,6 +32,14 @@ export default function Prestations({ data, preview }) {
   const categories = new Set(services.map((e) => e.category));
 
   return (
+    <>
+    <Head>
+    <title>Tarifs - Ho'Mecano</title>
+        <meta
+          name="description"
+          content="Tarifs TTC du garage Ho'Mecano"
+        />
+    </Head>
     <Section>
       <h2 className="text-6xl font-extrabold text-transparent bg-gradient-to-t bg-clip-text from-orange-700 to-orange-500">
         Tarifs{' '}
@@ -70,6 +77,7 @@ export default function Prestations({ data, preview }) {
       </div>
       <Promotions />
     </Section>
+    </>
   );
 }
 

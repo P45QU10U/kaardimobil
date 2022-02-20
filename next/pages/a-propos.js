@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Coords from '../components/Coords';
 import { Section } from '../components/designSystem/layout';
 import { useAppContext } from './_app';
@@ -23,6 +24,13 @@ export default function Apropos() {
 
   return (
     <>
+    <Head>
+    <title>A propos - Découvrez l'entreprise - {name}</title>
+        <meta
+          name="description"
+          content="Quelques mots sur Sébastien, technicien automobile, mobile"
+        />
+    </Head>
       <Coords />
       <Section className="m-8 p-4">
         <div className="border-4 border-orange-700 p-4 md:p-8 lg:p-12">

@@ -84,11 +84,10 @@ export default function Index({ data, preview }) {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <title>{name}</title>
+        <title>Garage mobile, réparez où vous le souhaitez - {name}</title>
         <meta
           name="description"
-          content="Ho'Mecano, garage mobile tous véhicules, où vous le souhaitez"
+          content="Garage automobile toutes marques, près de chez vous"
         />
       </Head>
       <Promotions />

@@ -10,7 +10,7 @@ export default function Mentionslegales() {
   return (
     <>
       <Head>
-        <title>{`Mentions légales ${name}`}</title>
+        <title>{`Mentions légales - ${name}`}</title>
       </Head>
       <Section>
         <h2>Editeur</h2>
@@ -41,6 +41,9 @@ export default function Mentionslegales() {
 
         <h3>Contenu du site</h3>
 
+        <h4>Conception</h4>
+        <p><a href="https://pasquiou.fr" >Richard Pasquiou</a>.#NextJS, #Sanity</p>
+        <h4>Images</h4>
         <p>
           Les images illustrant ce site sont libres de droits, sous licence
           Unsplash.{' '}

@@ -1,20 +1,27 @@
 import { useForm, ValidationError } from '@formspree/react';
+import { useState } from 'react';
 import { JoshButton } from './designSystem/Buttons';
 
 const whichFormSpree = 'xbjqkgqv';
 
 function ContactFormWhook({ address }) {
-  const [state, handleSubmit] = useForm(whichFormSpree, {
-    data: {
-      _subject: 'Vous avez un message',
-      pageTitle() {
-        // This function will be evaluated at submission time
-        return document.title;
+
+  
+  const [message, setMessage] = useState(address
+    ? `Bonjour, j'aimerais une intervention à l'adresse suivante : ${address}`
+    : 'Bonjour,');
+    
+    const [state, handleSubmit] = useForm(whichFormSpree, {
+      data: {
+        _subject: 'Vous avez un message',
+        pageTitle() {
+          // This function will be evaluated at submission time
+          return document.title;
+        },
       },
-    },
-    errors: [
-      {
-        field: 'email',
+      errors: [
+        {
+          field: 'email',
         message: 'Email requis, svp.',
         code: 'REQUIRED',
       },
@@ -25,6 +32,7 @@ function ContactFormWhook({ address }) {
       },
     ],
   });
+  
   if (state.succeeded) {
     return (
       <p>
@@ -52,10 +60,9 @@ function ContactFormWhook({ address }) {
           name="message"
           className="bg-gray-200 mt-2 focus:ring-2 focus:ring-blue-400"
           value={
-            address
-              ? `Bonjour, j'aimerais une intervention à l'adresse suivante : ${address}`
-              : 'Bonjour,'
+            message
           }
+          onChange={(e) => setMessage(e.target.value)}
         />
       </label>
       <ValidationError prefix="Message" field="message" errors={state.errors} />
