@@ -1,13 +1,12 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 // import Tooltip from '@reach/tooltip'
-import { FaSearch, FaInfo, FaTimes } from 'react-icons/fa';
+import { FaInfo, FaTimes } from 'react-icons/fa';
 import { useCombobox } from 'downshift';
 import Confetti from 'react-confetti';
 import { point } from '@turf/helpers';
 import distance from '@turf/distance';
 import useAsync from '../hooks/useasync';
 import { FullPageSpinner } from './lib';
-import { AddressRow } from './addressRow';
 import { AdvertDistance } from './AdvertDistance';
 import { client } from '../utils/api-fetch-external';
 import { useInterventionContext } from '../context/InterventionContext';
@@ -71,12 +70,10 @@ function giveMeAPrice(interPlace, distancesRenseignees, geocoords) {
     (a) => a[0] > distanceUserToCenter
   );
 
-  const detailsToDisplay = {
+  return {
     price: whatprice,
     distance: affichDist,
   };
-
-  return detailsToDisplay;
 }
 
 function InterventionPlaceScreen({ center, distanceMax }) {
@@ -86,7 +83,6 @@ function InterventionPlaceScreen({ center, distanceMax }) {
   const [statusAnimation, setStatusAnimation] = useState(false);
   const [coords, setScreenCoords] = useState(undefined);
   const debouncedSearchTerm = useDebounce(debouncedQuery, 500);
-  const [infoAddress, setInfoAddress] = useState(false);
 
   const alertRef = useRef();
 
@@ -107,14 +103,14 @@ function InterventionPlaceScreen({ center, distanceMax }) {
 
   // Debounce appel api adresse Gouv.fr
   useEffect(() => {
-    if (debouncedSearchTerm) {
+    if (debouncedSearchTerm?.length > 2) {
       run(
-        client(apiAdresseGouvFr(debouncedQuery, center)).then(
+        client(apiAdresseGouvFr(debouncedSearchTerm, center)).then(
           (dataa) => dataa.features
         )
       );
     }
-  }, [debouncedQuery, debouncedSearchTerm, run, center]);
+  }, [debouncedSearchTerm, run, center]);
 
   useEffect(() => {
     if (isItPossible && isItPossible.price) {
